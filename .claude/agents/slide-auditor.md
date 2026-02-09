@@ -119,3 +119,9 @@ Standard LaTeX checks:
 | **Critical** | Content overflow that hides information, broken image/figure, PDF image in Quarto (unrenderable) |
 | **Major** | Box fatigue (2+ boxes per slide), font below 0.85em, environment parity gap, missing CSS class |
 | **Minor** | Spacing adjustment, missing negative margin, fig-align preference, cosmetic inconsistency |
+
+## Output
+
+Save report to: `quality_reports/[filename]_slide_audit.md`
+
+When invoked by the orchestrator, return the report content directly. The orchestrator will parse severity levels to decide whether fixes are needed.

@@ -124,7 +124,7 @@ Guide the researcher to provide:
 - [ ] R analysis scripts (or link to existing scripts)
 - [ ] Generated tables (.tex fragments in tables/ folder)
 - [ ] Generated figures (PDF/SVG in figures/ folder)
-- [ ] Key papers for literature review (upload to supporting_papers/)
+- [ ] Key papers for literature review (upload to `master_supporting_docs/supporting_papers/`)
 - [ ] Data description (source, access, time period, unit of analysis)
 
 ### Required Before Results Section
@@ -139,11 +139,23 @@ Guide the researcher to provide:
 - [ ] Pre-analysis plan (if registered)
 ```
 
+#### PDF Processing for Supporting Papers
+
+When the user uploads papers to `master_supporting_docs/supporting_papers/`, **follow the safe PDF processing protocol** (see `.claude/rules/pdf-processing.md`) before attempting to read any PDF:
+
+1. **Check each PDF's size and page count** (`pdfinfo`, `ls -lh`) — NEVER read a PDF directly without checking first
+2. **If >20 pages or >10MB:** split into 5-page chunks using Ghostscript, saving chunks to a subfolder named after the paper
+3. **Process chunks one at a time** — extract key arguments, identification strategy, results, and citations
+4. **If papers were already split in a prior session**, read the existing chunks instead of re-splitting
+5. **Summarize each paper** in the plan file (1-2 sentences: what it argues, what method, what finding) for persistence across sessions
+
+This step is critical — skipping it risks crashing the session on large PDFs.
+
 **Gate 2 — Inputs Ready:**
 Check which inputs are available and assess readiness:
 - If tables/figures exist → ready for results drafting
 - If no R output yet → can still draft introduction, literature, design sections
-- If supporting papers provided → ready for literature review
+- If supporting papers provided and processed → ready for literature review
 
 **Partial starts are fine.** The pipeline adapts:
 - Draft sections that don't need R output first (introduction, literature, design)

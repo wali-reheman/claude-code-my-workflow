@@ -79,6 +79,12 @@ Read the project structure to understand what exists:
 5. **Bibliography:** Read `Bibliography_base.bib`
 6. **Memory:** Read `MEMORY.md` for `[LEARN:methodology]` entries
 7. **Supporting papers:** Glob `master_supporting_docs/supporting_papers/**`
+   - **Follow the safe PDF processing protocol** (see `.claude/rules/pdf-processing.md`):
+     1. Check each PDF's size and page count (`pdfinfo`, `ls -lh`) — NEVER read a PDF directly without checking first
+     2. If >20 pages or >10MB: split into 5-page chunks using Ghostscript before reading
+     3. Process chunks one at a time; focus on methodology, identification, and results sections
+     4. For `/reviewer-2` specifically: prioritize the design/methods and results chunks — skip literature review and appendix chunks unless needed for cross-referencing
+   - If papers were already split in a prior session, read the existing chunks instead of re-splitting
 
 If the project has very few files (e.g., just slides, no manuscript or R code), note this as a limitation — the review will be less thorough without code to cross-reference.
 

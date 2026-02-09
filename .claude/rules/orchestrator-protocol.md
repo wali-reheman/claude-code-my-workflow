@@ -1,3 +1,7 @@
+---
+alwaysApply: true
+---
+
 # Orchestrator Protocol: Contractor Mode
 
 **After a plan is approved, the orchestrator takes over.** It implements, verifies, reviews, fixes, and scores autonomously — presenting results only when the work meets quality standards or fix rounds are exhausted.

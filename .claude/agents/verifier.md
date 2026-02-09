@@ -124,6 +124,27 @@ Rscript scripts/R/FILENAME.R 2>&1 | tail -20
 - Warnings: N
 ```
 
+## Severity Mapping
+
+The verifier uses pass/fail checks, but each check maps to an orchestrator severity level for triage:
+
+| Check Result | Severity | Examples |
+|-------------|----------|---------|
+| **Compilation FAIL** | Critical | LaTeX errors, Quarto render failure, R script crash |
+| **Hard gate FAIL** | Critical | Stale TikZ SVGs, anonymization failure |
+| **Undefined citations/references** | Critical | Missing `\cite` or `\ref` targets |
+| **Overfull hbox warnings** | Major | Content potentially overflowing slide boundaries |
+| **Missing merge diagnostics** | Major | Data integrity unconfirmed |
+| **Aggregate entities in data** | Major | "World", "OECD" rows not filtered |
+| **Render warnings** | Minor | Non-fatal Quarto or LaTeX warnings |
+| **File size anomalies** | Minor | Unexpectedly small output files |
+
+## Output
+
+Save report to: `quality_reports/[filename]_verification_report.md`
+
+When invoked by the orchestrator, return the report content directly. The orchestrator will parse severity levels to decide whether fixes are needed before proceeding.
+
 ## Important
 - Run verification commands from the correct working directory
 - Use `TEXINPUTS` and `BIBINPUTS` environment variables for LaTeX

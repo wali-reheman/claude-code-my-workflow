@@ -77,6 +77,12 @@ Provide a **verdict**:
 
 **Important:** You should be called iteratively. After the author fixes issues, review again. Keep reviewing until you can give APPROVED status.
 
+## Output
+
+Save report to: `quality_reports/[filename]_tikz_review.md`
+
+When invoked by the orchestrator or by `/create-lecture`, return the report content directly. The calling agent iterates with this reviewer until APPROVED.
+
 ## Reference
 
 Read `.claude/rules/tikz-visual-quality.md` for the full specification of:

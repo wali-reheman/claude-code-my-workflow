@@ -88,6 +88,12 @@ Read these files to establish constraints:
    - Glob `scripts/**/*.R` or `Replication/**/*.R` for analysis scripts
 6. **Supporting papers** (if literature/theory section):
    - Check `master_supporting_docs/supporting_papers/` for relevant materials
+   - **Follow the safe PDF processing protocol** (see `.claude/rules/pdf-processing.md`):
+     1. Check each PDF's size and page count (`pdfinfo`, `ls -lh`) — NEVER read a PDF directly without checking first
+     2. If >20 pages or >10MB: split into 5-page chunks using Ghostscript before reading
+     3. Process chunks one at a time; extract key arguments, citations, and findings
+     4. For literature/theory sections: focus on introduction, theory, and conclusion chunks first
+   - If papers were already split in a prior session, read the existing chunks instead of re-splitting
 
 ### Step 2: Establish Word Budget
 

@@ -1,3 +1,7 @@
+---
+alwaysApply: true
+---
+
 # Plan-First Workflow & Context Preservation
 
 **These rules apply to ALL tasks, regardless of file type.**
