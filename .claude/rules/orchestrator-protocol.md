@@ -12,7 +12,7 @@ The orchestrator kicks in under these conditions:
 
 1. **After plan approval** — the standard trigger. Plan-first workflow step 7 hands off to the orchestrator.
 2. **"Just do it" mode** — when the user says "just do it", "you decide", or "handle it", skip the final presentation gate.
-3. **Skill delegation** — when a skill like `/create-lecture` or `/translate-to-quarto` reaches its implementation phase, the orchestrator loop governs execution.
+3. **Skill delegation** — when a skill like `/create-lecture`, `/create-paper`, or `/translate-to-quarto` reaches its implementation phase, the orchestrator loop governs execution.
 
 The orchestrator does NOT activate for:
 
@@ -53,10 +53,13 @@ Select review agents based on **file types touched during implementation**:
 
 | Files Modified | Agents to Run | Parallel? |
 |---------------|---------------|-----------|
-| `.tex` (Beamer) | proofreader, slide-auditor, pedagogy-reviewer | Yes |
-| `.qmd` (Quarto) | proofreader, slide-auditor, pedagogy-reviewer | Yes |
+| `.tex` (Beamer slides) | proofreader, slide-auditor, pedagogy-reviewer | Yes |
+| `.qmd` (Quarto slides) | proofreader, slide-auditor, pedagogy-reviewer | Yes |
 | `.qmd` with `.tex` pair | + quarto-critic (→ quarto-fixer if issues) | After above |
-| `.R` scripts | r-reviewer | Yes (with others) |
+| `.tex` (Manuscripts) | proofreader, domain-reviewer (if configured) | Yes |
+| `.tex` (Manuscript design section) | + methodology-reviewer (via `/reviewer-2`) | After above |
+| `.R` scripts (analysis) | r-reviewer | Yes (with others) |
+| `.R` scripts (data processing, `01_`-`04_`) | r-reviewer, polisci-data-engineer | Yes |
 | TikZ content present | tikz-reviewer | Yes (with others) |
 | Domain-critical content | domain-reviewer (if configured) | Yes (with others) |
 

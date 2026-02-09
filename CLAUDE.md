@@ -31,12 +31,18 @@
 | `/translate-to-quarto [filename]` | Full Beamer to Quarto translation workflow |
 | `/validate-bib` | Cross-reference citations vs bibliography file |
 | `/devils-advocate` | Challenge slide design with pedagogical questions |
+| `/reviewer-2` | Research design devil's advocate: identification, estimator, robustness, transparency |
+| `/paper-outline [topic]` | Manuscript skeleton: folder structure, section outline, word budget, hypothesis stubs |
+| `/draft-section [section]` | Draft a manuscript section with citation verification, voice audit, word budget |
+| `/submission-checklist [paper]` | Pre-submission quality gate: completeness, formatting, anonymization, replication |
+| `/create-paper [topic]` | End-to-end manuscript orchestrator: outline → draft → review → submit |
+| `/prep-data [task]` | Data processing: download, standardize codes, merge panels, validate joins, document |
 | `/create-lecture` | Full lecture creation workflow |
 | `/commit [message]` | Stage, commit, create PR, and merge to main |
 
-**Agents** (available for delegation): `proofreader`, `slide-auditor`, `pedagogy-reviewer`, `r-reviewer`, `tikz-reviewer`, `beamer-translator`, `quarto-critic`, `quarto-fixer`, `verifier`, `domain-reviewer`
+**Agents** (available for delegation): `proofreader`, `slide-auditor`, `pedagogy-reviewer`, `r-reviewer`, `tikz-reviewer`, `beamer-translator`, `quarto-critic`, `quarto-fixer`, `verifier`, `domain-reviewer`, `methodology-reviewer`, `polisci-data-engineer`
 
-**Rules** (auto-loaded): See `.claude/rules/` for domain-specific rules on LaTeX, Quarto, R, verification, proofreading, and quality gates.
+**Rules** (auto-loaded): See `.claude/rules/` for domain-specific rules on LaTeX, Quarto, R, verification, proofreading, quality gates, robustness checklists, manuscript conventions, and panel data conventions.
 
 ---
 
@@ -76,6 +82,21 @@ This repository is designed for multi-platform collaboration using:
 ├── docs/                              # GitHub Pages deployment (auto-generated)
 │   ├── index.html
 │   └── slides/
+├── Manuscripts/                       # Research papers for publication
+│   └── paper_name/                    # One folder per paper
+│       ├── main.tex                   # Authoritative manuscript source
+│       ├── main_anonymous.tex         # Blinded version for review
+│       ├── appendix.tex               # Online appendix
+│       ├── cover_letter.tex           # Journal cover letter
+│       ├── response_to_reviewers.tex  # R&R response (when needed)
+│       ├── figures/                   # Paper-specific figures
+│       ├── tables/                    # Generated .tex table fragments
+│       └── submission/                # Final submission package
+├── Replication/                       # Replication packages for papers
+│   ├── README.md                      # Software versions, data sources, run order
+│   ├── data/                          # Raw and processed data
+│   ├── code/                          # Numbered scripts (00_master, 01_clean, etc.)
+│   └── output/                        # Generated tables, figures, logs
 ├── scripts/                           # Utility scripts
 │   ├── sync_to_docs.sh               # Renders Quarto & syncs to docs/
 │   └── R/                             # R scripts for figures and analysis

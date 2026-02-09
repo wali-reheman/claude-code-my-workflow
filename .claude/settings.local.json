@@ -23,7 +23,12 @@
       "Bash(gh pr create:*)",
       "Bash(git pull:*)",
       "Bash(git reflog expire:*)",
-      "Bash(git gc:*)"
+      "Bash(git gc:*)",
+      "WebFetch(domain:journals.sagepub.com)",
+      "WebFetch(domain:www.cambridge.org)",
+      "WebFetch(domain:www.journals.uchicago.edu)",
+      "WebFetch(domain:ajps.org)",
+      "WebFetch(domain:apsanet.org)"
     ]
   }
 }

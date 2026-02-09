@@ -1,6 +1,6 @@
 ---
 name: validate-bib
-description: Validate bibliography entries against citations in all lecture files. Find missing entries and unused references.
+description: Validate bibliography entries against citations in all lecture and manuscript files. Find missing entries and unused references.
 disable-model-invocation: true
 ---
 
@@ -12,7 +12,7 @@ Cross-reference all citations in lecture files against bibliography entries.
 
 1. **Read the bibliography file** and extract all citation keys
 
-2. **Scan all lecture files for citation keys:**
+2. **Scan all lecture and manuscript files for citation keys:**
    - `.tex` files: look for `\cite{`, `\citet{`, `\citep{`, `\citeauthor{`, `\citeyear{`
    - `.qmd` files: look for `@key`, `[@key]`, `[@key1; @key2]`
    - Extract all unique citation keys used
@@ -38,6 +38,7 @@ Cross-reference all citations in lecture files against bibliography entries.
 ```
 Slides/*.tex
 Quarto/*.qmd
+Manuscripts/**/*.tex
 ```
 
 ## Bibliography location:
