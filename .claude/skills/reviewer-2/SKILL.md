@@ -1,7 +1,6 @@
 ---
 name: reviewer-2
 description: Research design devil's advocate. Auto-detects your methodology (DID, RDD, IV, conjoint, process tracing, QCA, text-as-data, formal theory, etc.) and interrogates identification, estimator choice, robustness architecture, transparency, and external validity. Produces a hostile but constructive Reviewer 2 report with the 3 most devastating questions and a design-specific robustness checklist. Read-only — never edits files.
-disable-model-invocation: true
 argument-hint: "[optional: specific file, folder, or design type to focus on]"
 ---
 
@@ -77,7 +76,7 @@ Read the project structure to understand what exists:
 3. **R scripts:** Glob `scripts/**/*.R`, `Figures/**/*.R`, `Replication/**/*.R`
 4. **Data:** Glob `Replication/data/**/*`, `data/**/*`
 5. **Bibliography:** Read `Bibliography_base.bib`
-6. **Memory:** Read `MEMORY.md` for `[LEARN:methodology]` entries
+6. **Memory:** Read `./PROJECT_MEMORY.md` for `[LEARN:methodology]` entries
 7. **Supporting papers:** Glob `master_supporting_docs/supporting_papers/**`
    - **Follow the safe PDF processing protocol** (see `.claude/rules/pdf-processing.md`):
      1. Check each PDF's size and page count (`pdfinfo`, `ls -lh`) — NEVER read a PDF directly without checking first

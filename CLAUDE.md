@@ -172,7 +172,7 @@ When Claude makes a mistake or you correct a misconception, tag the correction:
 [LEARN:r-code] Package X: ALWAYS include intercept in design matrix
 ```
 
-These corrections persist in `MEMORY.md` across sessions and prevent the same mistake from recurring.
+These corrections are appended to `./PROJECT_MEMORY.md` in the repo root — a version-controlled file you can inspect and edit. Named `PROJECT_MEMORY.md` (not `MEMORY.md`) to avoid collision with Claude's built-in memory system. Claude must read this file at session start and use the Edit tool to append new entries.
 
 ---
 
@@ -410,7 +410,7 @@ Start each session with:
 Claude, please:
 1. Read CLAUDE.MD to understand our workflow
 2. Check recent git commits to see what changed
-3. Check MEMORY.md for learned corrections from past sessions
+3. Read `PROJECT_MEMORY.md` for learned corrections from past sessions
 4. Check quality_reports/plans/ for any in-progress plans
 5. Check quality_reports/session_logs/ for the most recent session log
 6. Look at the lecture/slides we're working on

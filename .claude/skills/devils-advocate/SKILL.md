@@ -1,7 +1,6 @@
 ---
 name: devils-advocate
 description: Challenge a slide deck design with 5-7 specific pedagogical questions. Checks ordering, prerequisites, gaps, alternatives, notation conflicts, cognitive load, and book readiness.
-disable-model-invocation: true
 argument-hint: "[Lecture filename or topic description]"
 ---
 

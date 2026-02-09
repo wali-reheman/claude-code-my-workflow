@@ -1,7 +1,6 @@
 ---
 name: draft-section
 description: Draft a manuscript section with citation verification, academic voice audit, word budget enforcement, and version tracking. Chains scientific-writing, citation-management, and humanizer skills. Supports R&R mode with --revise flag.
-disable-model-invocation: true
 argument-hint: "[section name, e.g., 'introduction' or 'results'] [--revise 'reviewer comment'] [--scaffold] [--full-prose]"
 ---
 
@@ -81,7 +80,7 @@ Read these files to establish constraints:
 1. **`manuscript-conventions.md`** — structure, formatting, causal language hierarchy
 2. **The manuscript file** (`main.tex` / `main.qmd`) — read existing sections for voice, notation, argument flow
 3. **`Bibliography_base.bib`** — the authoritative citation source
-4. **`MEMORY.md`** — check for `[LEARN:writing]`, `[LEARN:citation]`, `[LEARN:style]` entries
+4. **`./PROJECT_MEMORY.md`** — check for `[LEARN:writing]`, `[LEARN:citation]`, `[LEARN:style]` entries
 5. **R output** (if results/discussion section):
    - Glob `Manuscripts/*/tables/*.tex` for table fragments
    - Glob `Manuscripts/*/figures/*` for figure files
@@ -171,7 +170,7 @@ Choose the output mode based on context:
 | Section has many numerical claims | YES — researcher should verify each | — |
 | Theory section with original argument | YES — researcher's voice is essential | — |
 | Boilerplate structure (design description) | — | YES — straightforward to draft |
-| User's past preference (check MEMORY.md for `[LEARN:writing-mode]`) | Follow learned preference | Follow learned preference |
+| User's past preference (check `./PROJECT_MEMORY.md` for `[LEARN:writing-mode]`) | Follow learned preference | Follow learned preference |
 | First draft vs revision | Scaffold for first draft of novel content | Full prose for revisions and standard sections |
 
 **Scaffolding mode output:**

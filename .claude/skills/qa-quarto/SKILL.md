@@ -1,7 +1,6 @@
 ---
 name: qa-quarto
 description: Adversarial QA workflow comparing Quarto HTML against Beamer PDF benchmark. Iterates between critic (finds issues) and fixer (applies fixes) until APPROVED or max iterations reached.
-disable-model-invocation: true
 argument-hint: "[LectureN, e.g., Lecture1]"
 ---
 

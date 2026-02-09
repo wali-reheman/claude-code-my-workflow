@@ -40,7 +40,7 @@ Hostile review of data processing code for political science research. Checks ev
 1. Glob `Replication/code/*.R`, `scripts/**/*.R` for data processing scripts
 2. Glob `data/raw/*`, `data/processed/*` for data files
 3. Read `data/codebook.md` if it exists
-4. Read `MEMORY.md` for `[LEARN:data]` or `[LEARN:merge]` entries
+4. Read `./PROJECT_MEMORY.md` for `[LEARN:data]` or `[LEARN:merge]` entries
 5. Identify which scripts are data processing (01-04) vs analysis (05+)
 
 ### Phase 2: Script-Level Review

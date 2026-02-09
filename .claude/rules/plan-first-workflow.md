@@ -22,13 +22,15 @@ A task is "non-trivial" if it involves:
 ### The Plan-First Protocol
 
 1. **Enter Plan Mode** — use `EnterPlanMode` to switch to planning
-1.5. **Check institutional memory** — read `MEMORY.md` for any `[LEARN]` entries relevant to this task
+1.5. **Check institutional memory** — read `./PROJECT_MEMORY.md` for any `[LEARN]` entries relevant to this task
 2. **Draft the plan** — outline what will change, which files are affected, and in what order
-3. **Save the plan** — write it to `quality_reports/plans/` (see Rule 2)
-4. **Present to user** — explain the plan and wait for approval
-5. **Only after approval** — exit plan mode
-6. **Immediately save initial session log** — capture the goal, plan summary, and key context while it's fresh (see Rule 5)
+3. **Present to user** — explain the plan and wait for approval
+4. **Only after approval** — exit plan mode
+5. **IMMEDIATELY save the plan to disk** — use the Write tool to save to `quality_reports/plans/YYYY-MM-DD_description.md` (see Rule 2). This is the **first thing you do after exiting plan mode**, before any implementation work. Claude's built-in plan file is ephemeral and will be lost; the disk copy is what survives.
+6. **Save initial session log** — capture the goal, plan summary, and key context while it's fresh (see Rule 5)
 7. **Implement via orchestrator** — the orchestrator protocol takes over (see `orchestrator-protocol.md`): implement → verify → review → fix → score → present results
+
+> **Why step 5 matters:** In plan mode, Claude cannot use Write/Edit tools — so you cannot save the plan during planning. The moment you exit plan mode, save the plan FIRST. If you skip this step and start implementing, auto-compression may discard the plan from context before you get a chance to save it.
 
 ### What a Good Plan Includes
 
@@ -51,7 +53,9 @@ You may skip plan mode for:
 
 ## Rule 2: Save Plans to Disk
 
-**Every plan must be saved to a file so it survives context compression.**
+**Every plan must be saved to a file so it survives context compression. This is NOT optional — Claude's internal plan file is ephemeral and will be lost. The disk copy at `quality_reports/plans/` is the only reliable record.**
+
+> **CRITICAL: Use the Write tool to save plans immediately after exiting plan mode.** Claude's built-in plan mode writes to a temporary file that is not persisted. You MUST write a separate copy to `quality_reports/plans/` yourself.
 
 ### Where to Save
 
@@ -136,11 +140,15 @@ If starting a new session (or after heavy compression):
 
 ## Rule 4: Continuous Learning with [LEARN] Tags
 
-**When a mistake is corrected, immediately save a `[LEARN:tag]` entry to MEMORY.md.**
+**When a mistake is corrected, immediately append a `[LEARN:tag]` entry to `./PROJECT_MEMORY.md` (the file in the repo root).**
+
+> **CRITICAL: Use the Edit tool to append to `./PROJECT_MEMORY.md` in the repository root.** Do NOT use Claude's built-in `/memory` system or write to `~/.claude/projects/`. The project keeps its own memory file so the user can see and version-control it. The file is named `PROJECT_MEMORY.md` (not `MEMORY.md`) specifically to avoid collision with Claude's native memory system.
 
 Format: `[LEARN:category] Incorrect assumption → correct fact`
 
 Common categories: `notation`, `citation`, `r-code`, `workflow`, `latex`. Add a tag whenever the user corrects a factual claim, a compilation error reveals a wrong assumption, or a review agent catches a systematic error. These persist across sessions and prevent repeating the same mistake.
+
+**At session start, always read `./PROJECT_MEMORY.md`** to load past corrections before beginning work.
 
 ---
 

@@ -2537,7 +2537,7 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td>Persistent memory</td>
-<td>CLAUDE.md + MEMORY.md survive across sessions</td>
+<td>CLAUDE.md + PROJECT_MEMORY.md survive across sessions</td>
 </tr>
 <tr class="odd">
 <td>Orchestrator mode</td>
@@ -3198,7 +3198,7 @@ APPROVED   NEEDS WORK
 </section>
 <section id="memory-cross-session-persistence" class="level2" data-number="4.6">
 <h2 data-number="4.6" class="anchored" data-anchor-id="memory-cross-session-persistence"><span class="header-section-number">4.6</span> Memory — Cross-Session Persistence</h2>
-<p>Claude Code has an auto-memory system at <code>~/.claude/projects/[project]/memory/MEMORY.md</code>. This file persists across sessions and is loaded into every conversation.</p>
+<p>Claude Code has an auto-memory system at <code>~/.claude/projects/[project]/memory/PROJECT_MEMORY.md</code>. This file persists across sessions and is loaded into every conversation.</p>
 <p>Use it for: - Key project facts that never change - Corrections you don’t want repeated (<code>[LEARN:tag]</code> format) - Current plan status</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Auto Memory</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -3212,7 +3212,7 @@ APPROVED   NEEDS WORK
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">LEARN:workflow</span><span class="co">]</span> Every Beamer edit must auto-sync to Quarto</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="plans-compression-resistant-task-memory" class="level3" data-number="4.6.1">
 <h3 data-number="4.6.1" class="anchored" data-anchor-id="plans-compression-resistant-task-memory"><span class="header-section-number">4.6.1</span> Plans — Compression-Resistant Task Memory</h3>
-<p>While MEMORY.md stores long-lived project facts, <strong>plans</strong> store task-specific strategy. Every non-trivial plan is saved to <code>quality_reports/plans/</code> with a timestamp. This means:</p>
+<p>While PROJECT_MEMORY.md stores long-lived project facts, <strong>plans</strong> store task-specific strategy. Every non-trivial plan is saved to <code>quality_reports/plans/</code> with a timestamp. This means:</p>
 <ul>
 <li>Plans survive auto-compression (they are on disk, not just in context)</li>
 <li>Plans survive session boundaries (readable in any future session)</li>
@@ -3228,7 +3228,7 @@ APPROVED   NEEDS WORK
 </section>
 <section id="how-it-all-fits-together" class="level3" data-number="4.6.3">
 <h3 data-number="4.6.3" class="anchored" data-anchor-id="how-it-all-fits-together"><span class="header-section-number">4.6.3</span> How It All Fits Together</h3>
-<p>With CLAUDE.md, MEMORY.md, plans, and session logs, the system has four distinct memory layers. Here is what each one does and when it matters:</p>
+<p>With CLAUDE.md, PROJECT_MEMORY.md, plans, and session logs, the system has four distinct memory layers. Here is what each one does and when it matters:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 12%">
@@ -3256,7 +3256,7 @@ APPROVED   NEEDS WORK
 </tr>
 <tr class="even">
 <td>Corrections</td>
-<td><code>MEMORY.md</code></td>
+<td><code>PROJECT_MEMORY.md</code></td>
 <td>Yes (on disk)</td>
 <td>On <code>[LEARN]</code> tag</td>
 <td>Prevent repeating past mistakes</td>
@@ -3607,7 +3607,7 @@ Phase 4: Only then extend
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">LEARN:citation</span><span class="co">]</span> Post-LASSO is Belloni (2013), NOT Belloni (2014)</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">LEARN:r-code</span><span class="co">]</span> Package X: ALWAYS include intercept in design matrix</span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">LEARN:workflow</span><span class="co">]</span> Every Beamer edit must auto-sync to Quarto</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>These tags are searchable and persist in MEMORY.md across sessions. When Claude encounters a similar situation, it checks memory first.</p>
+<p>These tags are searchable and persist in PROJECT_MEMORY.md across sessions. When Claude encounters a similar situation, it checks memory first.</p>
 </section>
 <section id="pattern-8-devils-advocate" class="level2" data-number="5.8">
 <h2 data-number="5.8" class="anchored" data-anchor-id="pattern-8-devils-advocate"><span class="header-section-number">5.8</span> Pattern 8: Devil’s Advocate</h2>

@@ -26,7 +26,7 @@ Before any interrogation, scan project files to detect the research design type.
 2. `Slides/**/*.tex`, `Quarto/**/*.qmd` — for research design descriptions
 3. `scripts/**/*.R`, `Figures/**/*.R` — for estimator functions, packages, model specifications
 4. `Bibliography_base.bib` — for methodological citations
-5. `MEMORY.md` — for any `[LEARN:methodology]` entries
+5. `./PROJECT_MEMORY.md` — for any `[LEARN:methodology]` entries
 6. `master_supporting_docs/supporting_papers/` — for referenced papers
 
 **Detection heuristics:**
@@ -282,5 +282,5 @@ Save report to `quality_reports/[PROJECT_OR_FILE]_reviewer2_report.md`:
    - MINOR = could strengthen but not fatal
 7. **Check your own work.** Before flagging a "wrong estimator," verify your recommendation is current (methods evolve fast).
 8. **Respect the researcher.** Flag genuine design issues, not stylistic preferences about how to present their own work.
-9. **Read the knowledge base and MEMORY.md.** Check for `[LEARN:methodology]` entries before flagging something already addressed.
+9. **Read the knowledge base and `./PROJECT_MEMORY.md`.** Check for `[LEARN:methodology]` entries before flagging something already addressed.
 10. **When uncertain about design type:** State what you see and what you can't determine. Never fabricate a design classification.

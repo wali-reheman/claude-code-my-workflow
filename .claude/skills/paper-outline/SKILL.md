@@ -1,7 +1,6 @@
 ---
 name: paper-outline
 description: Create a manuscript skeleton with section structure, word budget, hypothesis stubs, and empty files. Sets up the foundation for /draft-section to build on.
-disable-model-invocation: true
 argument-hint: "[paper title or topic] [--journal APSR] [--design DID]"
 ---
 
@@ -55,7 +54,7 @@ Create the structural foundation for a new manuscript: folder structure, section
    - Document structure (Section 2)
    - Journal requirements (Section 7)
    - Hypothesis formatting rules (Section 2)
-3. Read `MEMORY.md` for relevant `[LEARN]` entries
+3. Read `./PROJECT_MEMORY.md` for relevant `[LEARN]` entries
 4. Check if a manuscript folder for this topic already exists
 
 ### Step 2: Propose Structure

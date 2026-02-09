@@ -1,7 +1,6 @@
 ---
 name: create-paper
 description: End-to-end manuscript creation orchestrator. Guides a paper from outline through section drafting, methodology review, and submission readiness. Chains /paper-outline, /draft-section, /reviewer-2, and /submission-checklist into a phased, gate-controlled workflow.
-disable-model-invocation: true
 argument-hint: "[paper topic or title] [--journal APSR] [--design DID] [--resume phase-N]"
 ---
 
@@ -387,7 +386,7 @@ Papers take weeks or months. This skill is designed for interruption and resumpt
 When resuming:
 
 1. Read the plan file from `quality_reports/plans/` for this paper
-2. Read `MEMORY.md` for any `[LEARN]` entries added since last session
+2. Read `./PROJECT_MEMORY.md` for any `[LEARN]` entries added since last session
 3. Read the manuscript file for current state
 4. Check `git log` for recent changes
 5. State what has been completed and what's next

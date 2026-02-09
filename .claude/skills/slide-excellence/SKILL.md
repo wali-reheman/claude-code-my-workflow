@@ -1,7 +1,6 @@
 ---
 name: slide-excellence
 description: Comprehensive slide excellence review combining visual audit, pedagogical review, proofreading, and optional TikZ/parity/substance reviews. Produces multiple reports and a combined summary.
-disable-model-invocation: true
 argument-hint: "[QMD or TEX filename]"
 ---
 

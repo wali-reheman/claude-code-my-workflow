@@ -1,7 +1,6 @@
 ---
 name: submission-checklist
 description: Final pre-submission gate for journal manuscripts. Checks completeness, formatting, anonymization, word count, bibliography, replication package, and journal-specific requirements. Read-only — produces a checklist report, never edits files.
-disable-model-invocation: true
 argument-hint: "[paper folder, e.g., 'Manuscripts/my_paper'] [--journal APSR]"
 ---
 

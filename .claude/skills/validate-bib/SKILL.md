@@ -1,7 +1,6 @@
 ---
 name: validate-bib
 description: Validate bibliography entries against citations in all lecture and manuscript files. Find missing entries and unused references.
-disable-model-invocation: true
 ---
 
 # Validate Bibliography

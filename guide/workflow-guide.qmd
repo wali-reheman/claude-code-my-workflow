@@ -51,7 +51,7 @@ Claude Code is a **CLI tool** that runs on your computer with full access to you
 | Read & edit your files | Surgical edits to `.tex`, `.qmd`, `.R` files in place |
 | Run shell commands | Compile LaTeX, run R scripts, render Quarto --- directly |
 | Access git history | Commits, PRs, branches --- all from the conversation |
-| Persistent memory | CLAUDE.md + MEMORY.md survive across sessions |
+| Persistent memory | CLAUDE.md + PROJECT_MEMORY.md survive across sessions |
 | Orchestrator mode | Claude autonomously plans, implements, reviews, fixes, and verifies |
 | Multi-agent workflows | 10 specialized agents for proofreading, layout, pedagogy, code review |
 | Quality gates | Automated scoring --- nothing ships below 80/100 |
@@ -474,7 +474,7 @@ The **Stop hook** runs a fast Python script after every response. No LLM call, n
 
 ## Memory --- Cross-Session Persistence
 
-Claude Code has an auto-memory system at `~/.claude/projects/[project]/memory/MEMORY.md`. This file persists across sessions and is loaded into every conversation.
+The workflow stores corrections and learned facts in `PROJECT_MEMORY.md` at the repo root. This file is named `PROJECT_MEMORY.md` (not `MEMORY.md`) to avoid collision with Claude Code's built-in memory system at `~/.claude/projects/`. By keeping it in the repo, you can see, edit, and version-control all corrections.
 
 Use it for:
 - Key project facts that never change
@@ -482,7 +482,7 @@ Use it for:
 - Current plan status
 
 ```markdown
-# Auto Memory
+# Project Memory
 
 ## Key Facts
 - Project uses XeLaTeX, not pdflatex
@@ -494,9 +494,11 @@ Use it for:
 - [LEARN:workflow] Every Beamer edit must auto-sync to Quarto
 ```
 
+Rules instruct Claude to read this file at session start and append to it with the Edit tool (not Claude's built-in `/memory` command).
+
 ### Plans --- Compression-Resistant Task Memory
 
-While MEMORY.md stores long-lived project facts, **plans** store task-specific strategy. Every non-trivial plan is saved to `quality_reports/plans/` with a timestamp. This means:
+While PROJECT_MEMORY.md stores long-lived project facts, **plans** store task-specific strategy. Every non-trivial plan is saved to `quality_reports/plans/` with a timestamp. This means:
 
 - Plans survive auto-compression (they are on disk, not just in context)
 - Plans survive session boundaries (readable in any future session)
@@ -514,12 +516,12 @@ New sessions can read these logs to understand not just the current state of the
 
 ### How It All Fits Together
 
-With CLAUDE.md, MEMORY.md, plans, and session logs, the system has four distinct memory layers. Here is what each one does and when it matters:
+With CLAUDE.md, PROJECT_MEMORY.md, plans, and session logs, the system has four distinct memory layers. Here is what each one does and when it matters:
 
 | Layer | File | Survives Compression? | Updated When | Purpose |
 |-------|------|----------------------|--------------|---------|
 | Project context | `CLAUDE.md` | Yes (on disk) | Rarely | Project rules, folder structure, commands |
-| Corrections | `MEMORY.md` | Yes (on disk) | On `[LEARN]` tag | Prevent repeating past mistakes |
+| Corrections | `PROJECT_MEMORY.md` | Yes (on disk) | On `[LEARN]` tag | Prevent repeating past mistakes |
 | Task strategy | `quality_reports/plans/` | Yes (on disk) | Once per task | Plan survives planning-to-implementation handoff |
 | Decision reasoning | `quality_reports/session_logs/` | Yes (on disk) | Incrementally | Record *why* decisions were made |
 | Conversation | Claude's context window | **No** (compressed) | Every response | Current working memory |
@@ -803,7 +805,7 @@ Every correction gets tagged for future reference:
 - [LEARN:workflow] Every Beamer edit must auto-sync to Quarto
 ```
 
-These tags are searchable and persist in MEMORY.md across sessions. When Claude encounters a similar situation, it checks memory first.
+These tags are searchable and persist in `PROJECT_MEMORY.md` across sessions. When Claude encounters a similar situation, it checks memory first.
 
 ## Pattern 8: Devil's Advocate
 

@@ -182,7 +182,7 @@ This catches notation inconsistencies, overflow, missing content, and visual reg
 
 ### Continuous Learning
 
-Every correction gets tagged with `[LEARN:tag]` format and persists in MEMORY.md across sessions. This prevents Claude from repeating the same mistakes.
+Every correction gets tagged with `[LEARN:tag]` format and persists in `PROJECT_MEMORY.md` (in the repo root) across sessions. Named `PROJECT_MEMORY.md` instead of `MEMORY.md` to avoid collision with Claude's built-in memory system. This prevents Claude from repeating the same mistakes.
 
 ### Session Logging (with Automated Reminders)
 

@@ -33,7 +33,9 @@
       "Bash(grep:*)",
       "Bash(done)",
       "Bash(find:*)",
-      "Bash(git -C /Users/wali/Documents/GitHub/claude-code-my-workflow checkout -- quality_reports/session_logs/2026-02-07_hooks-and-pedagogy.md)"
+      "Bash(git -C /Users/wali/Documents/GitHub/claude-code-my-workflow checkout -- quality_reports/session_logs/2026-02-07_hooks-and-pedagogy.md)",
+      "Bash(do sed -i '' '/^disable-model-invocation: true$/d' \".claude/skills/$skill/SKILL.md\")",
+      "Bash(echo:*)"
     ]
   }
 }

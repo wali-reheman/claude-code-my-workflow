@@ -1,7 +1,6 @@
 ---
 name: prep-data
 description: Orchestrate data processing for polisci research. Downloads datasets, standardizes country codes, merges panels, validates joins, documents provenance, and generates a clean analysis-ready dataset. Follows panel-data-conventions.md.
-disable-model-invocation: true
 argument-hint: "[task description, e.g., 'merge V-Dem and WDI for country-year panel 1990-2023'] [--paper paper_name] [--audit]"
 ---
 
@@ -54,7 +53,7 @@ Build clean, merge-verified, documented analysis datasets from public political 
 1. Parse `$ARGUMENTS` for task description, datasets, year range, and unit of analysis
 2. Read `panel-data-conventions.md` for cleaning protocols and merge standards
 3. Read `r-code-conventions.md` for script structure requirements
-4. Read `MEMORY.md` for `[LEARN:data]`, `[LEARN:merge]`, `[LEARN:r-code]` entries
+4. Read `./PROJECT_MEMORY.md` for `[LEARN:data]`, `[LEARN:merge]`, `[LEARN:r-code]` entries
 5. If `--paper` specified: read the manuscript for variable names, data descriptions, and sample definitions
 6. If `--audit` specified: skip to Step 6 (audit mode)
 
