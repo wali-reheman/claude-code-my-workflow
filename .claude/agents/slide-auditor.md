@@ -107,7 +107,15 @@ Standard LaTeX checks:
 ```markdown
 ### Slide: "[Slide Title]" (slide N)
 - **Issue:** [description]
-- **Severity:** [High / Medium / Low]
+- **Severity:** [Critical / Major / Minor]
 - **Recommendation:** [specific fix following spacing-first principle]
 - **Format-specific note:** [Quarto or Beamer specific suggestion, if applicable]
 ```
+
+### Severity Guide
+
+| Level | Criteria |
+|-------|----------|
+| **Critical** | Content overflow that hides information, broken image/figure, PDF image in Quarto (unrenderable) |
+| **Major** | Box fatigue (2+ boxes per slide), font below 0.85em, environment parity gap, missing CSS class |
+| **Minor** | Spacing adjustment, missing negative margin, fig-align preference, cosmetic inconsistency |

@@ -58,11 +58,35 @@ Create a beautiful, pedagogically excellent Beamer lecture deck.
 - TikZ diagrams in Beamer source (single source of truth)
 - Save RDS for future Quarto integration
 
-### Phase 5: Polish & Compile
-- Full 3-pass compilation
-- Run Devil's Advocate
-- Run Substance Review (if domain reviewer configured)
+### Phase 5: Polish & Review
+
+**5a. Compile & Verify**
+- Full 3-pass XeLaTeX compilation
+- Run verifier agent: compilation check, overfull hbox count, citation resolution
+
+**5b. Automated Review (parallel agents)**
+
+Run these review agents in parallel — they are the same agents the orchestrator dispatches for `.tex` slide files:
+
+| Agent | What It Checks |
+|-------|---------------|
+| `proofreader` | Grammar, typos, consistency, academic quality |
+| `slide-auditor` | Overflow, font sizes, box fatigue, spacing |
+| `pedagogy-reviewer` | Narrative arc, notation clarity, pacing |
+| `tikz-reviewer` | TikZ diagram quality (if TikZ present) |
+| `domain-reviewer` | Substantive correctness (if configured) |
+
+**5c. Fix Round**
+- Apply fixes from reviews: Critical → Major → Minor
+- Re-compile to confirm fixes are clean
+- Score against quality-gates rubric (`.claude/rules/quality-gates.md`)
+
+**5d. Final Polish**
+- Run Devil's Advocate (`/devils-advocate`) for pedagogical challenge
 - Update knowledge base with new notation
+- Update session log
+
+**Note:** The orchestrator protocol governs the review-fix loop. If `/create-lecture` is invoked via the orchestrator (e.g., as part of a plan), the full verify → review → fix → score loop runs automatically. If invoked standalone, Phase 5b-5c runs once (no looping) and presents results.
 
 ---
 
@@ -79,5 +103,6 @@ Create a beautiful, pedagogically excellent Beamer lecture deck.
 [ ] At least 1 running application threaded throughout
 [ ] New notation added to knowledge base
 [ ] Session log updated
-[ ] Devil's Advocate run
+[ ] Review agents run (proofreader, slide-auditor, pedagogy-reviewer)
+[ ] Quality score >= 80 (commit threshold)
 ```

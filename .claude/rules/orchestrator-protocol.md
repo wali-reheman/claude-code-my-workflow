@@ -87,10 +87,20 @@ Within each fix round, apply fixes in strict order:
 
 ### Limits
 
-- **Main loop:** max 5 review-fix rounds
+- **Main loop:** max 5 review-fix rounds (default)
 - **Critic-fixer sub-loop:** max 5 rounds (within each main loop iteration)
 - **Verification retries:** max 2 attempts per verification step
 - After max rounds, present what remains. Never loop indefinitely.
+
+### Skill-Specific Overrides
+
+Skills may define their own loop limits in their SKILL.md file. When the orchestrator runs on behalf of a skill, it respects the skill's limits over the defaults above. Current overrides:
+
+| Skill | Override | Rationale |
+|-------|----------|-----------|
+| `/create-paper` | max 3 review-fix rounds | Manuscripts need deeper per-round fixes |
+
+If a skill does not specify limits, the defaults apply.
 
 ---
 

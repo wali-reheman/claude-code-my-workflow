@@ -44,6 +44,21 @@
 
 **Rules** (auto-loaded): See `.claude/rules/` for domain-specific rules on LaTeX, Quarto, R, verification, proofreading, quality gates, robustness checklists, manuscript conventions, and panel data conventions.
 
+**Required Installed Skills** (external — not included in this template):
+
+Some skills chain external MCP-installed skills for enhanced functionality. The workflow degrades gracefully if these are absent — Claude will perform the work directly instead of delegating — but for best results, install them:
+
+| Installed Skill | Used By | Purpose |
+|----------------|---------|---------|
+| `scientific-writing` | `/draft-section` | IMRAD structure, reporting guidelines, flowing prose |
+| `citation-management` | `/draft-section`, `/validate-bib` | Google Scholar/PubMed search, BibTeX generation |
+| `humanizer` | `/draft-section` | Remove AI-generated writing patterns |
+| `statistical-analysis` | `/reviewer-2` (optional) | Power analysis, assumption checks |
+| `scientific-critical-thinking` | `/reviewer-2` (optional) | Bias assessment, evidence quality |
+| `peer-review` | `/reviewer-2` (optional) | Broader manuscript evaluation |
+
+To check which are installed, run: `/` then look at the autocomplete list.
+
 ---
 
 ## Project Overview
@@ -173,6 +188,9 @@ When content exists in multiple formats (e.g., Beamer PDF and Quarto HTML), ther
 | TikZ diagrams | Beamer `.tex` file | extract_tikz.tex, SVG, docs/ |
 | Bibliography | `Bibliography_base.bib` | All `.tex` files reference it |
 | Figures/images | `Figures/` directory | `docs/Figures/` via sync script |
+| Manuscript content | `Manuscripts/paper_name/main.tex` | `main_anonymous.tex`, appendix, submission package |
+| Replication data | `Replication/data/raw/` | `Replication/data/processed/` via numbered scripts |
+| Tables/figures (papers) | R scripts in `Replication/code/` | `.tex` fragments in `Manuscripts/paper_name/tables/` |
 
 > **Modify the original source, then regenerate all derived versions automatically.**
 
@@ -209,6 +227,71 @@ Final deliverables:
 
 ---
 
+## Manuscript Development Workflow
+
+Use `/create-paper [topic]` for end-to-end orchestration, or individual skills for specific steps.
+
+### 1. Outline Stage (`/paper-outline`)
+- Define research question, hypotheses, and contribution
+- Generate folder structure (`Manuscripts/paper_name/`)
+- Produce section outline with word budgets
+- Identify key citations and datasets needed
+
+### 2. Data & Analysis Stage (`/prep-data`)
+- Download and clean datasets (V-Dem, WDI, Polity, ACLED, etc.)
+- Merge panels with full diagnostics (match rates, unmatched cases)
+- Construct variables and generate numbered scripts (`01_`-`04_`)
+- Document everything in `data/codebook.md`
+
+### 3. Drafting Stage (`/draft-section`)
+- Draft sections one at a time with citation verification
+- Voice audit: remove AI patterns, enforce academic register
+- Track word budget (actual vs target per section)
+- Each section verified against R code and data
+
+### 4. Review Stage (`/reviewer-2`)
+- Auto-detect research design (DID, RDD, IV, conjoint, process tracing, etc.)
+- Run 4 universal lenses + design-specific robustness checklist
+- Produce "3 Most Devastating Questions" report
+- Verdict: ACCEPT / MINOR / MAJOR / REJECT
+
+### 5. Submission Stage (`/submission-checklist`)
+- Completeness check (all sections, figures, tables present)
+- Formatting for target journal
+- Anonymization verification (blinded version)
+- Replication package validation
+- Final submission package assembly
+
+---
+
+## Data Processing Workflow
+
+Use `/prep-data [task]` for guided data work, or `/prep-data --audit` to review existing scripts.
+
+### Supported Datasets
+V-Dem, Polity V, World Bank WDI, ACLED, UCDP-GED, Afrobarometer, WVS, COW, Gleditsch-Ward, and 20+ others. See `.claude/rules/panel-data-conventions.md` for the full reference.
+
+### Key Principles
+1. **Never merge by country name** — always use standardized country codes (COW, ISO-3, or GW)
+2. **Diagnostics after every merge** — match rate, unmatched cases, row count validation
+3. **Recode before merge** — Polity special codes (-66, -77, -88), V-Dem variable selection, WDI aggregate filtering
+4. **Zero is data, NA is missing** — event datasets must create zero-event country-years explicitly
+5. **Document everything** — codebook with sources, download dates, variable definitions, cleaning decisions
+
+### Script Naming Convention
+```
+Replication/code/
+├── 00_master.R           # Runs all scripts in order
+├── 01_download.R         # Fetch raw data
+├── 02_clean_[dataset].R  # One per data source
+├── 03_merge.R            # Combine panels with diagnostics
+├── 04_construct.R        # Create analysis variables
+├── 05_analysis.R         # Estimation (not data processing)
+└── 06_figures.R          # Generate tables and figures
+```
+
+---
+
 ## Task Completion Verification Protocol
 
 **At the end of EVERY task, Claude MUST verify the output works correctly.** A Stop hook enforces this automatically.
@@ -218,6 +301,8 @@ See `.claude/rules/verification-protocol.md` for the full checklist.
 **Quick summary:**
 - **Quarto:** Run `./scripts/sync_to_docs.sh LectureN`, verify HTML renders
 - **LaTeX:** Compile with xelatex (3 passes), check for overfull hbox
+- **Manuscripts:** 3-pass xelatex + bibtex, check undefined citations/references, word count, anonymization
+- **Data processing:** Run scripts in order, check merge diagnostics, verify panel dimensions
 - **TikZ to SVG:** Use `pdf2svg` with **0-based indexing**
 - **Always** use `sync_to_docs.sh` instead of manual copying
 
@@ -231,7 +316,7 @@ See `.claude/rules/verification-protocol.md` for the full checklist.
 | **90/100** | PR | High quality, ready for deployment |
 | **95/100** | Excellence | Aspirational target |
 
-See `.claude/rules/quality-gates.md` for full scoring rubric.
+Rubrics exist for: Quarto slides, Beamer slides, R scripts, manuscripts, and data processing scripts. See `.claude/rules/quality-gates.md` for full scoring tables.
 
 ---
 
@@ -344,18 +429,34 @@ Before ending a session:
 
 ## Current Project State
 
-<!-- Update this table as you develop your project -->
+<!-- Update these tables as you develop your project -->
+
+### Lectures
 
 | Lecture | Beamer | Quarto | Key Content |
 |---------|--------|--------|-------------|
 | 1: [Topic] | `Lecture01_Topic.tex` | `Lecture1_Topic.qmd` | [Brief description] |
 | 2: [Topic] | `Lecture02_Topic.tex` | — | [Brief description] |
 
+### Manuscripts
+
+| Paper | Status | Location | Target Journal |
+|-------|--------|----------|---------------|
+| [Paper title] | [Draft / Under review / R&R / Accepted] | `Manuscripts/paper_name/` | [Journal name] |
+
+### Replication Packages
+
+| Paper | Scripts | Data Sources | Status |
+|-------|---------|-------------|--------|
+| [Paper title] | `Replication/code/01_`-`04_` | [V-Dem, WDI, Polity, etc.] | [In progress / Complete] |
+
 ---
 
 ## Proofreading Protocol (MANDATORY)
 
-**Every lecture file MUST be reviewed before any commit or PR.** Use `/proofread` to run the proofreading agent.
+**Every lecture and manuscript file MUST be reviewed before any commit or PR.** Use `/proofread` to run the proofreading agent.
+
+The proofreader auto-detects file type: slides get overflow/box checks, manuscripts get paragraph coherence/section transition/academic voice checks. Both get grammar, typos, consistency, and citation verification.
 
 **Key rule:** The agent must NEVER apply changes directly. It proposes changes via a report in `quality_reports/`, then waits for your approval.
 

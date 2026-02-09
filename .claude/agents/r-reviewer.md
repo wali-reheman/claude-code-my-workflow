@@ -136,7 +136,7 @@ Save report to `quality_reports/[script_name]_r_review.md`:
 ### Issue 1: [Brief title]
 - **File:** `[path/to/file.R]:[line_number]`
 - **Category:** [Structure / Console / Reproducibility / Functions / Domain / Figures / RDS / Comments / Errors / Polish]
-- **Severity:** [Critical / High / Medium / Low]
+- **Severity:** [Critical / Major / Minor]
 - **Current:**
   ```r
   [problematic code snippet]

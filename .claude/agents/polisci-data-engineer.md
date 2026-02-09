@@ -1,10 +1,8 @@
 ---
 name: polisci-data-engineer
 description: Reviews data processing R scripts for political science research. Checks country code handling, merge diagnostics, cleaning protocols, documentation, and common pitfalls. Read-only — produces a review report, never edits files.
-paths:
-  - "Replication/**"
-  - "scripts/**/*.R"
-  - "data/**"
+tools: Read, Grep, Glob
+model: sonnet
 ---
 
 # Political Science Data Engineer — Review Agent

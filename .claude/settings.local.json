@@ -28,7 +28,10 @@
       "WebFetch(domain:www.cambridge.org)",
       "WebFetch(domain:www.journals.uchicago.edu)",
       "WebFetch(domain:ajps.org)",
-      "WebFetch(domain:apsanet.org)"
+      "WebFetch(domain:apsanet.org)",
+      "Bash(head:*)",
+      "Bash(grep:*)",
+      "Bash(done)"
     ]
   }
 }
