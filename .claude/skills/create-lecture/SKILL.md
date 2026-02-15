@@ -65,7 +65,7 @@ Create a beautiful, pedagogically excellent Beamer lecture deck.
 
 **5b. Automated Review (parallel agents)**
 
-Run these review agents in parallel — they are the same agents the orchestrator dispatches for `.tex` slide files:
+Launch these review agents in parallel — they are the same agents the orchestrator dispatches for `.tex` slide files:
 
 | Agent | What It Checks |
 |-------|---------------|

@@ -39,3 +39,11 @@ Net result: from 2 Stop hooks + 1 PostToolUse hook → 1 Stop hook (command-base
 ## Open Questions
 
 - None. Session work complete.
+
+---
+
+## 2026-02-13: Continued — Dataset Coding Workflow
+
+Full session log at `polisci-dataset-coding/quality_reports/session_logs/2026-02-13_dataset-coding-improvements.md`.
+
+Summary: Fixed 9 bugs from hostile audit, redesigned Step 0 as phased pre-coding interview, added country-first/variable-first coding strategies, added country narrative generation (Step 3b), identified country expertise triggering as major gap. See dataset-coding session log for details.

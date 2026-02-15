@@ -634,3 +634,198 @@ Descriptive work is not "causal inference without identification" — it has its
 - "Associated with" used 50 times in a paper that's clearly arguing for a causal effect
 - No discussion of what the numbers mean substantively (just statistical reporting)
 - Overgeneralization from a narrow sample without scope conditions
+
+---
+
+## Module S: Spatial Econometrics
+
+### Identification Assumptions to Interrogate
+
+1. **Spatial dependence structure:** Is the spatial weights matrix W theoretically justified or arbitrary?
+2. **Exogeneity of W:** The spatial weights matrix must be exogenous to the outcome — distance-based W is safer than economic-linkage W
+3. **SAR vs SEM vs SARAR:** Does spatial dependence operate through the outcome (lag), the errors (error), or both?
+4. **Stable unit treatment value:** Spillover effects must match the spatial structure assumed
+
+### Robustness Checklist
+
+- [ ] Spatial weights matrix theoretically motivated (not just geographic contiguity by default)
+- [ ] Sensitivity to alternative W specifications (contiguity, inverse distance, k-nearest neighbors)
+- [ ] Moran's I or Lagrange Multiplier tests to confirm spatial dependence exists
+- [ ] SAR vs SEM selection justified (LM test or theoretical argument)
+- [ ] Direct vs indirect (spillover) effects decomposed and reported (LeSage & Pace 2009)
+- [ ] Row-standardization choice documented and justified
+- [ ] Temporal dynamics addressed if panel data (spatial panel models)
+- [ ] Boundary effects considered (edge units have fewer neighbors)
+- [ ] MAUP sensitivity (results robust to different geographic aggregation levels?)
+
+### Key Citations
+- LeSage & Pace (2009). *Introduction to Spatial Econometrics.* CRC Press.
+- Neumayer & Plümper (2016). "W." *Political Science Research and Methods.*
+- Franzese & Hays (2007). "Spatial Econometric Models of Cross-Sectional Interdependence." *Political Analysis.*
+
+### Common Mistakes
+- Using contiguity W without justification when distance or economic linkage is more appropriate
+- Not reporting indirect (spillover) effects — only direct effects reported
+- Spatial weights matrix endogenous to the outcome
+- No sensitivity to W specification (the single biggest fragility in spatial models)
+
+---
+
+## Module T: Duration Models / Event History Analysis
+
+### Identification Assumptions to Interrogate
+
+1. **Proportional hazards (Cox PH):** The effect of covariates is multiplicative and constant over time
+2. **Independent censoring:** Censoring is not informative about the event process
+3. **No unobserved heterogeneity (frailty):** Units with the same covariates have the same hazard rate
+4. **Competing risks:** If multiple event types exist, are they independent?
+
+### Robustness Checklist
+
+- [ ] Proportional hazards assumption tested (Schoenfeld residuals, log-log plots)
+- [ ] If PH violated: time-varying coefficients, stratification, or parametric alternative
+- [ ] Sensitivity to functional form (Cox vs Weibull vs exponential vs log-logistic)
+- [ ] Tied events handled appropriately (Efron or exact method, not Breslow for many ties)
+- [ ] Competing risks addressed if applicable (Fine-Gray subdistribution, cause-specific hazards)
+- [ ] Unobserved heterogeneity assessed (frailty models, shared frailty for clustered data)
+- [ ] Left truncation / delayed entry handled if applicable
+- [ ] Time-varying covariates properly constructed (no look-ahead bias)
+- [ ] Sample selection into risk set documented (who is "at risk" and when?)
+
+### Key Citations
+- Box-Steffensmeier & Jones (2004). *Event History Modeling.* Cambridge.
+- Box-Steffensmeier & Zorn (2001). "Duration Models and Proportional Hazards in Political Science." *AJPS.*
+- Fine & Gray (1999). "A Proportional Hazards Model for the Subdistribution of a Competing Risk." *JASA.*
+
+### Common Mistakes
+- Not testing proportional hazards assumption
+- Ignoring competing risks (treating all non-events as censored)
+- Time-varying covariates with look-ahead bias
+- Using discrete-time models when continuous-time is appropriate (or vice versa)
+
+---
+
+## Module U: List Experiments / Sensitive Survey Measurement
+
+### Identification Assumptions to Interrogate
+
+1. **No design effects:** Adding the sensitive item does not change responses to control items
+2. **No ceiling/floor effects:** Respondents are not at the maximum/minimum count, which would reveal their sensitive answer
+3. **Truthful responding:** Respondents answer the sensitive item honestly under the indirect questioning cover
+
+### Robustness Checklist
+
+- [ ] Design effects tested (treatment group means on control items differ from control group?)
+- [ ] Ceiling/floor effects diagnosed (respondents answering 0 or N in treatment group)
+- [ ] Negative estimated prevalence addressed (can indicate design effects or floor effects)
+- [ ] Multivariate list experiment model used for subgroup analysis (Blair & Imai 2012)
+- [ ] Standard errors account for the inefficiency of list experiments (much larger than direct questions)
+- [ ] Placebo list experiment included (known-prevalence item to validate the method)
+- [ ] Double list experiment design considered (two treatment lists for efficiency)
+- [ ] Sample size justified given the inefficiency penalty
+
+### Key Citations
+- Blair & Imai (2012). "Statistical Analysis of List Experiments." *Political Analysis.*
+- Glynn (2013). "What Can We Learn with Statistical Truth Serum?" *Public Opinion Quarterly.*
+- Corstange (2009). "Sensitive Questions, Truthful Answers?" *Political Analysis.*
+
+### Common Mistakes
+- Ignoring design effects (the most common and most damaging violation)
+- Sample too small for the inherent inefficiency of list experiments
+- Treating negative prevalence estimates as zero rather than investigating
+- No placebo test to validate the method works in this population
+
+---
+
+## Module V: Panel VAR / Time Series
+
+### Identification Assumptions to Interrogate
+
+1. **Stationarity:** Variables must be stationary (or cointegrated if non-stationary)
+2. **Lag order:** The number of lags must be sufficient to capture the data-generating process
+3. **Identification of shocks:** Structural VAR requires identifying assumptions (Cholesky ordering, sign restrictions, or external instruments)
+4. **Cross-sectional heterogeneity (PVAR):** Slope homogeneity assumption is strong
+
+### Robustness Checklist
+
+- [ ] Unit root tests for all variables (IPS, LLC for panels; ADF, PP for single series)
+- [ ] Lag length selection documented (AIC, BIC, HQIC — report all three)
+- [ ] Stability condition verified (all eigenvalues inside unit circle)
+- [ ] Impulse response functions with confidence bands (bootstrap or asymptotic)
+- [ ] Sensitivity to Cholesky ordering (if recursive identification)
+- [ ] Granger causality tests reported
+- [ ] Forecast error variance decomposition
+- [ ] If PVAR: GMM estimation with appropriate instruments (Abrigo & Love 2016)
+- [ ] Cointegration tested if variables are I(1) (Johansen, Pedroni for panels)
+
+### Key Citations
+- Abrigo & Love (2016). "Estimation of Panel Vector Autoregression in Stata." *Stata Journal.*
+- Lütkepohl (2005). *New Introduction to Multiple Time Series Analysis.* Springer.
+- Holtz-Eakin, Newey & Rosen (1988). "Estimating Vector Autoregressions with Panel Data." *Econometrica.*
+
+### Common Mistakes
+- Non-stationary variables in levels without cointegration
+- Cholesky ordering chosen arbitrarily without theoretical justification
+- Confidence bands too narrow (not bootstrapped)
+- Too many lags for the sample size (over-parameterization)
+
+---
+
+## Module W: Decomposition Methods
+
+### Identification Assumptions to Interrogate
+
+1. **Oaxaca-Blinder:** Counterfactual assumption — would Group A's coefficients apply if Group B had Group A's characteristics?
+2. **Kitagawa decomposition:** Stable relationships within subgroups
+3. **Detailed decomposition:** Individual variable contributions require the "omitted group" normalization choice
+
+### Robustness Checklist
+
+- [ ] Reference group choice documented and sensitivity tested (pooled, Group A, Group B)
+- [ ] Detailed decomposition normalization identified (Yun 2005 or Gelbach 2016)
+- [ ] Selection correction if groups are endogenous (Heckman-style)
+- [ ] Non-linear decomposition if outcome is binary (Fairlie 2005) or count
+- [ ] Bootstrap standard errors for decomposition components
+- [ ] Interpretation distinguishes "explained" from "unexplained" carefully (unexplained ≠ discrimination)
+- [ ] Sequential vs simultaneous decomposition choice documented
+
+### Key Citations
+- Fortin, Lemieux & Firpo (2011). "Decomposition Methods in Economics." *Handbook of Labor Economics.*
+- Gelbach (2016). "When Do Covariates Matter?" *Journal of Labor Economics.*
+- Fairlie (2005). "An Extension of the Blinder-Oaxaca Decomposition Technique." *Journal of Economic and Social Measurement.*
+
+### Common Mistakes
+- Interpreting the "unexplained" component as discrimination without caveat
+- Sensitivity to reference group not tested
+- Detailed decomposition results depend on omitted category — not reported
+- Binary outcome decomposed with linear methods
+
+---
+
+## Module X: Specification Curve / Multiverse Analysis
+
+### Core Concept
+
+Specification curve analysis (Simonsohn et al. 2020) and multiverse analysis (Steegen et al. 2016) systematically explore how results change across all reasonable analytical choices. These are robustness methods, not identification strategies.
+
+### Rigor Checklist
+
+- [ ] Universe of specifications justified (which choices are "reasonable"?)
+- [ ] All analytical decisions enumerated (variable operationalization, sample restrictions, controls, functional form, estimator)
+- [ ] Results visualized across all specifications (specification curve plot)
+- [ ] Median/modal result reported alongside range
+- [ ] Joint statistical test across specifications (permutation-based under-the-null test)
+- [ ] Specifications not cherry-picked — include unfavorable ones
+- [ ] "Preferred specification" identified with justification (not post-hoc)
+- [ ] Dominant specifications identified (which choices drive sign/significance changes?)
+
+### Key Citations
+- Simonsohn, Simmons & Nelson (2020). "Specification Curve Analysis." *Nature Human Behaviour.*
+- Steegen, Tuerlinckx, Gelman & Vanpaemel (2016). "Increasing Transparency Through a Multiverse Analysis." *Perspectives on Psychological Science.*
+- Young & Holsteen (2017). "Model Uncertainty and Robustness." *Sociological Methods & Research.*
+
+### Common Mistakes
+- Including implausible specifications to inflate the range
+- Not testing whether the specification curve differs from the null
+- Treating all specifications as equally valid (some are clearly better)
+- Using specification curve to p-hack by finding *any* significant specification

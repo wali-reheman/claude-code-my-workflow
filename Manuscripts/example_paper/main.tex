@@ -1,0 +1,114 @@
+% ==============================================================================
+% Example Manuscript — Delete or rename when starting your paper
+% ==============================================================================
+%
+% Compile with:
+%   cd Manuscripts/example_paper
+%   TEXINPUTS=../../Preambles:$TEXINPUTS xelatex main.tex
+%   BIBINPUTS=../..:$BIBINPUTS bibtex main
+%   TEXINPUTS=../../Preambles:$TEXINPUTS xelatex main.tex
+%   TEXINPUTS=../../Preambles:$TEXINPUTS xelatex main.tex
+%
+% ==============================================================================
+
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{natbib}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\doublespacing
+
+\title{[Your Paper Title]}
+\author{[Your Name]\\[Your Institution]}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+[Your abstract here. Most journals require 150-250 words.]
+\end{abstract}
+
+\textbf{Keywords:} [keyword1], [keyword2], [keyword3]
+
+% ==============================================================================
+\section{Introduction}
+% ==============================================================================
+
+[Your introduction here.]
+
+% ==============================================================================
+\section{Literature Review}
+% ==============================================================================
+
+[Your literature review here.]
+
+% ==============================================================================
+\section{Theory and Hypotheses}
+% ==============================================================================
+
+[Your theory section here.]
+
+% ==============================================================================
+\section{Research Design}
+% ==============================================================================
+
+\subsection{Data}
+
+[Describe your data sources, sample, and key variables.]
+
+\subsection{Identification Strategy}
+
+[Describe your identification strategy — DID, RDD, IV, matching, etc.]
+
+\subsection{Estimation}
+
+[Describe your estimator and specification.]
+
+% ==============================================================================
+\section{Results}
+% ==============================================================================
+
+[Your results here. Reference tables and figures:]
+
+% Example table input:
+% \input{tables/main_results.tex}
+
+% Example figure:
+% \begin{figure}[htbp]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{figures/main_figure.pdf}
+%     \caption{[Caption]}
+%     \label{fig:main}
+% \end{figure}
+
+% ==============================================================================
+\section{Robustness}
+% ==============================================================================
+
+[Your robustness checks here.]
+
+% ==============================================================================
+\section{Discussion}
+% ==============================================================================
+
+[Discuss implications, limitations, and future directions.]
+
+% ==============================================================================
+\section{Conclusion}
+% ==============================================================================
+
+[Your conclusion here.]
+
+% ==============================================================================
+% References
+% ==============================================================================
+
+\bibliographystyle{apalike}
+\bibliography{../../Bibliography_base}
+
+\end{document}

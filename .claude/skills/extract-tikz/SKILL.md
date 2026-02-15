@@ -57,8 +57,14 @@ cd ../..
 ### Step 6: Verify SVG files
 - Read 2-3 SVG files to confirm they contain valid SVG markup
 - Confirm file sizes are reasonable (not 0 bytes)
+- Compare SVG count with TikZ block count — must match exactly
+- Verify no stale SVGs remain from previous extractions (file modification time should be current)
 
-### Step 7: Report results
+### Step 7: Cross-reference with Quarto slides
+- If a corresponding `.qmd` file exists in `Quarto/`, verify all `tikz_exact_XX.svg` references in the QMD match files that were just generated
+- Warn if any QMD references SVG indices that don't exist (e.g., referencing `tikz_exact_05.svg` when only 4 diagrams were extracted)
+
+### Step 8: Report results
 
 ## Source of Truth Reminder
 TikZ diagrams MUST be edited in the Beamer `.tex` file first, then copied verbatim to `extract_tikz.tex`. See `.claude/rules/single-source-of-truth.md`.

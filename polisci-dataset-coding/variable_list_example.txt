@@ -1,0 +1,241 @@
+
+
+### **D1: Clergy/Ulama Political Marginalization**
+
+*Captures state restrictions on religious scholars' political participation and the dismantling of clerical institutions.*
+
+| Variable | Description |
+| --- | --- |
+| `clergy_institution_abolish` | Were traditional clerical institutions abolished or dismantled? |
+| `clergy_appointment` | Does the state control appointment of senior religious figures? |
+| `fatwa_authority` | What is the legal standing of religious rulings (fatwas)? |
+| `religious_party_ban` | Are religiously-based political parties banned? |
+| `clergy_office_ban` | Are clergy banned from holding elected/appointed political office? |
+| `clergy_party_ban` | Are clergy banned from political party membership or leadership? |
+| `clergy_speech_ban` | Are clergy banned from political speech, endorsements, or commentary? |
+| `clergy_dress_ban` | Are clergy required to secularize their dress/appearance in public? |
+| `clergy_licensing` | Must clergy be licensed/registered by the state to preach or lead prayers? |
+| `mosque_political_ban` | Are political activities banned in mosques? |
+| `sermon_regulation` | Does state regulate or approve sermon content? |
+| `religious_org_political` | Can religious organizations engage in political advocacy? |
+| `minority_clergy_restrict` | Do minority sect clergy face additional restrictions beyond those applied to majority? |
+| `clergy_state_power` | **Flag:** Do clergy hold formal state power? (Used to identify religious states). |
+
+---
+
+### **D2: Waqf/Religious Endowment Control**
+
+*Captures state nationalization and control of religious endowments (waqf).*
+
+| Variable | Description |
+| --- | --- |
+| `waqf_nationalization` | Has the state nationalized waqf properties? |
+| `waqf_admin_state` | Does the state administer waqf properties? |
+| `waqf_revenue_state` | Does the state collect/redirect waqf revenues? |
+| `waqf_legal_status` | What is the legal status of waqf as an institution? |
+| `waqf_family_status` | What is the legal status of family waqf (waqf ahli)? |
+| `waqf_new_creation` | Can individuals legally create new waqf? |
+| `waqf_admin` | Who administers waqf properties? (Detailed scale) |
+| `waqf_revenue_control` | Who controls waqf revenues? (Detailed scale) |
+| `waqf_appointment` | Who appoints waqf administrators (mutawallis/nazirs)? |
+| `waqf_confiscation` | Has the state confiscated waqf properties without compensation? |
+| `waqf_land_reform` | Was waqf land included in agrarian reform/redistribution? |
+| `waqf_inalienability` | Can waqf property be sold or converted? |
+| `waqf_replacement_funding` | Did the state replace waqf income for religious institutions? |
+| `waqf_minority_differential` | Are minority sect waqf treated differently from majority sect? |
+| `waqf_clerical_control` | **Flag:** Do clergy control waqf through state power? |
+
+---
+
+### **D3: Religious Education Control**
+
+*Captures state efforts to control the transmission of religious knowledge.*
+
+| Variable | Description |
+| --- | --- |
+| `kuttab_status` | Are traditional elementary religious schools (kuttab) permitted? |
+| `madrasa_nationalization` | Has the state nationalized/absorbed madrasas? |
+| `madrasa_closure` | Have madrasas been closed entirely? |
+| `religious_univ_autonomy` | Do religious universities (Al-Azhar, Zaytuna, etc.) have autonomy? |
+| `kuttab_curriculum_control` | Does the state control kuttab curriculum? |
+| `madrasa_status` | Are traditional advanced religious schools (madrasas) permitted to operate? |
+| `madrasa_curriculum_control` | Does the state control madrasa curriculum? |
+| `madrasa_secular_required` | Are secular subjects (math, science, languages) required in madrasas? |
+| `private_religious_school` | Are private religious schools (outside state system) permitted? |
+| `religious_univ_status` | Do major religious universities (Al-Azhar, etc.) exist and function? |
+| `religious_univ_leadership` | Who appoints the leadership of religious universities? |
+| `religious_univ_secular_faculties` | Have secular faculties been added to religious universities? |
+| `public_school_religion` | Is religious instruction part of the public school curriculum? |
+| `public_school_religion_control` | Who controls the content of religious instruction in public schools? |
+| `religion_curriculum_state` | Does the state write or mandate the religious education curriculum? |
+| `religion_teacher_certification` | Must religious education teachers have state certification? |
+| `religion_teacher_qualification` | What qualifications are required to teach religion? |
+| `state_religious_ed_alternative` | Has the state created its own religious education institutions? |
+| `informal_religious_ed` | Are informal religious education activities (study circles) permitted? |
+| `foreign_religious_training` | Can students pursue religious education abroad/are foreign degrees recognized? |
+| `religious_ed_recognition` | Are religious education credentials recognized for employment? |
+| `colonial_competing_education` | Did colonial power create a competing secular education system? |
+| `religious_ed_minority_differential` | Do religious minorities face additional restrictions on religious education? |
+| `religious_ed_clerical_control` | **Flag:** Do clergy control religious education through state power? |
+
+---
+
+### **D4: Sharia Court Status**
+
+*Measures the jurisdiction and status of Islamic courts and personal status law.*
+
+| Variable | Description |
+| --- | --- |
+| `sharia_court_exists` | Do separate Sharia courts exist? |
+| `sharia_psl_jurisdiction` | Religious court jurisdiction over personal status law? |
+| `polygamy_restriction` | Are there state restrictions on polygamy? (Scale 0-3) |
+| `divorce_reform` | Has the state reformed divorce law? |
+| `civil_marriage_option` | Can citizens marry through civil (non-religious) ceremony? |
+| `sharia_civil_jurisdiction` | Do religious courts have jurisdiction over civil/commercial matters? |
+| `sharia_criminal_jurisdiction` | Do religious courts have jurisdiction over criminal matters? |
+| `sharia_psl_reform` | How extensively has personal status law been reformed from classical Sharia? |
+| `sharia_polygamy_banned` | Is polygamy legally banned? (Binary 0-1) |
+| `sharia_divorce_reform` | Has divorce law been reformed to require judicial process? |
+| `sharia_inheritance_reform` | Has inheritance law been reformed from classical Sharia rules? |
+| `sharia_marriage_age` | Has minimum marriage age been established by law? |
+| `qadi_appointment` | Who appoints qadis/religious judges? |
+| `qadi_training` | What training is required for qadis? |
+| `qadi_civil_service` | Are qadis part of the regular civil service judiciary? |
+| `sharia_constitutional_review` | Can religious bodies review legislation for Sharia compliance? |
+| `psl_confessional_system` | Does the state have separate personal status systems for different sects? |
+| `sharia_court_minority_differential` | Do minority Muslims face different treatment in religious courts? |
+| `sharia_court_clerical_control` | **Flag:** Do clergy control the court system through state power? |
+| `psl_civil_option` | Is there a civil/secular option for personal status matters? |
+
+---
+
+### **D5: Public Religion Restrictions**
+
+*Captures restrictions on visible and public expressions of religiosity.*
+
+| Variable | Description |
+| --- | --- |
+| `sufi_order_ban` | Are Sufi orders banned? |
+| `veil_ban` | Are there restrictions on women's veiling (hijab, niqab)? |
+| `veil_mandate` | Does the state mandate veiling? |
+| `public_prayer_restrict` | Are there restrictions on public prayer outside mosques? |
+| `religious_broadcast_restrict` | Are religious broadcasts restricted? |
+| `sufi_lodge_closure` | Were Sufi lodges (tekke, zāwiya) closed or confiscated? |
+| `sufi_ritual_ban` | Are Sufi rituals (dhikr, samāʿ) banned or restricted? |
+| `sufi_shrine_access` | Are pilgrimages to Sufi saints' shrines restricted? |
+| `sufi_order_clerical_control` | **Flag:** Are restrictions driven by clerical authority? |
+| `religious_hat_ban` | Are traditional religious head coverings (fez, turban) banned? |
+| `western_dress_mandate` | Is Western dress mandated in any context? |
+| `dress_restriction_scope` | In what contexts do dress restrictions apply? |
+| `adhan_restriction` | Are there restrictions on the call to prayer (adhān)? |
+| `ramadan_observance_restrict` | Are public Ramadan observances restricted? |
+| `ashura_restrict` | Are Shia Ashura commemorations restricted? |
+| `mawlid_restrict` | Are celebrations of the Prophet's birthday (mawlid) restricted? |
+| `minority_practice_restrict` | Do minority sect practices face additional restrictions? |
+| `public_religion_clerical_control` | **Flag:** Are restrictions driven by clerical authority? |
+| `religious_symbol_ban` | Are religious symbols banned in government spaces? |
+| `religious_publication_restrict` | Are religious publications restricted? |
+| `public_religion_restrict_index` | Composite index of public religion restrictions. |
+| `dress_coercion_direction` | Direction of coercion (-1 = mandatory modesty, 1 = mandatory secularization). |
+
+---
+
+### **D6: Islamist Movement Repression**
+
+*Captures state repression of political Islamist movements.*
+
+| Variable | Description |
+| --- | --- |
+| `islamist_legal_status` | What is the legal status of organized Islamist movements? |
+| `islamist_party_ban` | Are Islamist political parties banned? |
+| `islamist_mass_arrest` | Have there been mass arrests of Islamist members? |
+| `islamist_movement_exists` | Does an organized Islamist political movement exist in this country-year? |
+| `islamist_movement_type` | What type of Islamist movement is present? |
+| `islamist_org_ban` | Are Islamist civil society organizations banned? |
+| `islamist_terrorist_designation` | Has the main Islamist movement been designated a terrorist organization? |
+| `islamist_electoral_ban` | Are Islamists excluded from electoral participation? |
+| `islamist_candidate_disqual` | Are Islamist candidates disqualified from elections? |
+| `islamist_elected_removed` | Have elected Islamist officials been removed from office? |
+| `islamist_election_nullified` | Have Islamist electoral victories been nullified? |
+| `islamist_arrests` | What is the scale of arrests of Islamist activists? |
+| `islamist_imprisonment` | What is the scale of Islamist political prisoners? |
+| `islamist_executions` | Have Islamist leaders or activists been executed? |
+| `islamist_torture` | Is torture of Islamist detainees systematic? |
+| `islamist_extrajudicial` | Have extrajudicial killings of Islamists occurred? |
+| `islamist_surveillance` | What is the level of surveillance of Islamist activities? |
+| `islamist_media_ban` | Are Islamist media and publications banned? |
+| `islamist_infiltration` | Does the state systematically infiltrate Islamist organizations? |
+| `islamist_repress_clerical_control` | **Flag:** Is repression driven by rival religious authority? |
+| `islamist_violent_distinct` | Does the state distinguish between violent and non-violent Islamism? |
+
+---
+
+### **D7: State Religious Infrastructure**
+
+*Measures the bureaucratic infrastructure used to manage religion.*
+
+| Variable | Description |
+| --- | --- |
+| `diyanet_model` | Is there a Diyanet-style comprehensive state religious apparatus? |
+| `imam_state_employee` | Are mosque imams state employees? |
+| `mosque_state_ownership` | Does the state own mosques? |
+| `secularism_constitutional` | Is secularism explicitly stated in the constitution? |
+| `sharia_source_legislation` | Is Sharia a/the source of legislation? |
+| `state_religion_control_direction` | **Critical Flag:** Is state apparatus subordinating (-1) or empowering (+1) religion? |
+| `religious_ministry_exists` | Does a Ministry of Religious Affairs exist? |
+| `religious_ministry_power` | What powers does the religious ministry have? |
+| `religious_ministry_budget` | How substantial is state funding for religious administration? |
+| `imam_salary_state` | Does the state pay imam salaries? |
+| `imam_appointment_state` | Does the state appoint imams to mosques? |
+| `religious_personnel_count` | Scale of state religious employment. |
+| `mosque_registration` | Must mosques register with the state? |
+| `mosque_construction_approval` | Does the state control new mosque construction? |
+| `private_mosque_allowed` | Are private/independent mosques permitted? |
+| `state_religion_constitutional` | Is Islam declared the state religion? |
+| `head_of_state_religion_req` | Must the head of state be Muslim? |
+| `hajj_state_organized` | Does the state organize Hajj pilgrimage? |
+| `religious_holiday_official` | Are Islamic holidays official state holidays? |
+| `religious_broadcasting_state` | Does the state operate religious broadcasting? |
+| `state_quran_distribution` | Does the state distribute Qurans/religious materials? |
+| `official_islam_defined` | Does the state define "official" acceptable Islam? |
+
+---
+
+### **D8: Religious Political Inclusion in Governance**
+
+*Measures the extent to which religious authority is formally incorporated into the state's decision-making apparatus.*
+
+| Variable | Description |
+| --- | --- |
+| `gov_religious_office_req` | Are there religious qualifications for the head of state? |
+| `gov_religious_consultation` | Does the state consult religious authorities on policy? |
+| `gov_religious_legitimation` | Does the regime derive legitimacy from religious authority/titles? |
+| `gov_religious_veto` | Can religious authorities effectively block state policy? |
+| `gov_consultation_scope` | What domains are subject to religious input? |
+
+---
+
+### **D9: Social and Moral Regulation (Women's Rights & Alcohol)**
+
+*Measures state enforcement of religious morality in social life, specifically regarding women's autonomy and vice regulation.*
+
+| Variable | Description |
+| --- | --- |
+| `women_guardianship` | Is male guardianship (*wilaya*) legally enforced? |
+| `women_travel_restrict` | Can women travel abroad without male permission? |
+| `women_driving_ban` | Is there a legal ban on women driving cars? |
+| `women_passport_autonomy` | Can a woman obtain a passport without a guardian's signature? |
+| `women_employment_req` | Is guardian/husband permission legally required for a woman to work? |
+| `women_marriage_autonomy` | Can an adult woman contract her own marriage without a guardian? |
+| `inheritance_equality` | Is inheritance gender-equal? |
+| `divorce_initiation_women` | What legal mechanisms exist for a woman to initiate divorce? |
+| `khul_judicial_status` | Can a judge grant *Khul'* (divorce for compensation) without the husband's consent? |
+| `child_custody_age` | Does the law automatically transfer child custody to the father at a specific age? |
+| `obedience_ordinance` | Does the law allow husbands to file "House of Obedience" claims to force a wife's return? |
+| `interfaith_marriage_women` | Can a Muslim woman marry a non-Muslim man? |
+| `women_judge_ban` | Are women banned from serving as judges? |
+| `testimony_weight` | Is a woman's court testimony weighted equally to a man's? |
+| `alcohol_ban_status` | Is alcohol prohibited? |
+| `alcohol_public_availability` | How available is alcohol in public venues? |
+| `alcohol_licensing` | Strictness of the alcohol licensing system. |
+| `alcohol_sectarian_exception` | Is alcohol permitted only for non-Muslims? |

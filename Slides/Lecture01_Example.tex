@@ -1,0 +1,97 @@
+% ==============================================================================
+% Example Beamer Lecture — Delete or rename when starting your project
+% ==============================================================================
+%
+% This is a minimal example showing the template structure.
+% Compile with: cd Slides && TEXINPUTS=../Preambles:$TEXINPUTS xelatex Lecture01_Example.tex
+%
+% ==============================================================================
+
+\documentclass[aspectratio=169,11pt]{beamer}
+\input{header}
+
+\title{Lecture 1: [Your Topic]}
+\subtitle{[Your Course Name]}
+\author{[Your Name]}
+\institute{[Your Institution]}
+\date{\today}
+
+\begin{document}
+
+% --- Title Slide ---
+\begin{frame}
+\titlepage
+\end{frame}
+
+% --- Outline ---
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+% ==============================================================================
+\section{Motivation}
+% ==============================================================================
+
+\begin{frame}{Why This Matters}
+
+\begin{itemize}
+    \item First key motivation point
+    \item Second key motivation point
+    \item Research question: \textbf{[Your question here]}
+\end{itemize}
+
+\end{frame}
+
+% ==============================================================================
+\section{Key Concepts}
+% ==============================================================================
+
+\begin{frame}{Definition}
+
+% Example of a custom environment (customize in header.tex)
+\begin{block}{Key Term}
+A formal definition goes here. Use consistent notation throughout.
+\end{block}
+
+\vspace{1em}
+
+Mathematical notation example:
+\[
+Y_{it} = \alpha_i + \beta \cdot D_{it} + \varepsilon_{it}
+\]
+
+\end{frame}
+
+% ==============================================================================
+\section{Example TikZ Diagram}
+% ==============================================================================
+
+\begin{frame}{Causal Diagram}
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance=2cm,
+    box/.style={rectangle, draw=primary_blue, thick, minimum width=2cm, minimum height=0.8cm, fill=primary_blue!10},
+    arrow/.style={-{Stealth[length=3mm]}, thick, primary_blue}
+]
+    \node[box] (treatment) {Treatment $D$};
+    \node[box, right=of treatment] (outcome) {Outcome $Y$};
+    \node[box, above=1cm of $(treatment)!0.5!(outcome)$] (confounder) {Confounder $X$};
+
+    \draw[arrow] (treatment) -- (outcome);
+    \draw[arrow] (confounder) -- (treatment);
+    \draw[arrow] (confounder) -- (outcome);
+\end{tikzpicture}
+\end{center}
+
+\end{frame}
+
+% ==============================================================================
+\section{References}
+% ==============================================================================
+
+\begin{frame}[allowframebreaks]{References}
+\bibliography{../Bibliography_base}
+\end{frame}
+
+\end{document}

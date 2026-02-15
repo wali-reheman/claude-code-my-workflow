@@ -14,7 +14,7 @@ Run the mandatory proofreading protocol on lecture files. This produces a report
    - If `$ARGUMENTS` is a specific filename: review that file only
    - If `$ARGUMENTS` is "all": review all lecture files in `Slides/` and `Quarto/`
 
-2. **For each file, launch the proofreader agent** that checks for:
+2. **For each file, launch the `proofreader` agent** that checks for:
 
    **GRAMMAR:** Subject-verb agreement, articles (a/an/the), prepositions, tense consistency
    **TYPOS:** Misspellings, search-and-replace artifacts, duplicated words

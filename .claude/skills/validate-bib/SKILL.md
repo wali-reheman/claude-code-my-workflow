@@ -1,6 +1,7 @@
 ---
 name: validate-bib
 description: Validate bibliography entries against citations in all lecture and manuscript files. Find missing entries and unused references.
+argument-hint: "[optional: specific file or directory to scan]"
 ---
 
 # Validate Bibliography

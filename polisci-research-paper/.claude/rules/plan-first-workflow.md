@@ -1,0 +1,192 @@
+---
+alwaysApply: true
+---
+
+# Plan-First Workflow & Context Preservation
+
+**These rules apply to ALL tasks, regardless of file type.**
+
+---
+
+## Rule 1: Plan Before You Build
+
+**For any non-trivial task, enter Plan Mode FIRST before writing code or making edits.**
+
+A task is "non-trivial" if it involves:
+- Creating or modifying more than one file
+- Implementing a new feature or workflow
+- Translating between formats (e.g., Stata to R)
+- Any task the user describes with multiple steps
+- Any task where the approach is not immediately obvious
+
+### The Plan-First Protocol
+
+1. **Enter Plan Mode** — use `EnterPlanMode` to switch to planning
+1.5. **Check institutional memory** — read `./PROJECT_MEMORY.md` for any `[LEARN]` entries relevant to this task
+2. **Draft the plan** — outline what will change, which files are affected, and in what order
+3. **Present to user** — explain the plan and wait for approval
+4. **Only after approval** — exit plan mode
+5. **IMMEDIATELY save the plan to disk** — use the Write tool to save to `quality_reports/plans/YYYY-MM-DD_description.md` (see Rule 2). This is the **first thing you do after exiting plan mode**, before any implementation work. Claude's built-in plan file is ephemeral and will be lost; the disk copy is what survives.
+6. **Save initial session log** — capture the goal, plan summary, and key context while it's fresh (see Rule 5)
+7. **Implement via orchestrator** — the orchestrator protocol takes over (see `orchestrator-protocol.md`): implement → verify → review → fix → score → present results
+
+> **Why step 5 matters:** In plan mode, Claude cannot use Write/Edit tools — so you cannot save the plan during planning. The moment you exit plan mode, save the plan FIRST. If you skip this step and start implementing, auto-compression may discard the plan from context before you get a chance to save it.
+
+### What a Good Plan Includes
+
+- **Task description** — what are we trying to accomplish?
+- **Files to modify** — which files will be created, edited, or deleted?
+- **Approach** — step-by-step implementation strategy
+- **Dependencies** — what must happen before what?
+- **Verification steps** — how will we confirm it worked?
+- **Risks** — what could go wrong?
+
+### When to Skip Planning
+
+You may skip plan mode for:
+- Single-file edits with a clear scope (fix a typo, add a citation)
+- Running existing skills/commands (`/review-r`, `/proofread`)
+- Purely informational questions
+- Tasks the user explicitly says to do immediately
+
+---
+
+## Rule 2: Save Plans to Disk
+
+**Every plan must be saved to a file so it survives context compression. This is NOT optional — Claude's internal plan file is ephemeral and will be lost. The disk copy at `quality_reports/plans/` is the only reliable record.**
+
+> **CRITICAL: Use the Write tool to save plans immediately after exiting plan mode.** Claude's built-in plan mode writes to a temporary file that is not persisted. You MUST write a separate copy to `quality_reports/plans/` yourself.
+
+### Where to Save
+
+```
+quality_reports/plans/
+├── 2026-02-06_draft-methods-section.md
+├── 2026-02-06_merge-vdem-polity.md
+└── ...
+```
+
+### Naming Convention
+
+`YYYY-MM-DD_short-description.md`
+
+### Plan File Format
+
+```markdown
+# Plan: [Short Description]
+
+**Date:** [YYYY-MM-DD HH:MM]
+**Status:** DRAFT | APPROVED | IN PROGRESS | COMPLETED
+**Task:** [What the user asked for]
+
+## Approach
+
+1. [Step 1]
+2. [Step 2]
+3. ...
+
+## Files to Modify
+
+- `path/to/file1.ext` — [what changes]
+- `path/to/file2.ext` — [what changes]
+
+## Verification
+
+- [ ] [How to verify step 1]
+- [ ] [How to verify step 2]
+
+## Notes
+
+[Any risks, open questions, or decisions made]
+```
+
+### When to Update the Plan
+
+- **Before starting:** Status = APPROVED
+- **During implementation:** Check off completed steps
+- **After completion:** Status = COMPLETED, add any deviations noted
+- **If the plan changes:** Update the file and note what changed and why
+
+---
+
+## Rule 3: Never /clear — Rely on Auto-Compression
+
+**NEVER use `/clear` to reset the conversation. Use auto-compression instead.**
+
+### Why This Matters
+
+- `/clear` is a **nuclear option** — it destroys ALL context, including design decisions, corrections, and the mental model of the project
+- Auto-compression is **graceful degradation** — Claude Code's built-in compression preserves the most important context while freeing space
+- Saved plans (Rule 2) provide a **safety net** — even if compression loses details, the plan file on disk has the full strategy
+
+### What to Do When Context Gets Long
+
+1. **Let auto-compression handle it.** Claude Code will compress automatically when needed.
+2. **Save important context to disk** — plans, decisions, correction logs
+3. **Reference saved files** — point Claude to the plan file or quality report if context seems thin
+4. **Start a new session if truly needed** — but start by reading the saved plan and recent git log, not from a blank slate
+
+### Session Recovery Protocol
+
+If starting a new session (or after heavy compression):
+
+1. Read `CLAUDE.md` for project context
+2. Read the most recent plan in `quality_reports/plans/`
+3. Check `git log --oneline -10` for recent changes
+4. Check `git diff` for any uncommitted work
+5. State what you understand the current task to be
+
+---
+
+## Rule 4: Continuous Learning with [LEARN] Tags
+
+**When a mistake is corrected, immediately append a `[LEARN:tag]` entry to `./PROJECT_MEMORY.md` (the file in the repo root).**
+
+> **CRITICAL: Use the Edit tool to append to `./PROJECT_MEMORY.md` in the repository root.** Do NOT use Claude's built-in `/memory` system or write to `~/.claude/projects/`. The project keeps its own memory file so the user can see and version-control it. The file is named `PROJECT_MEMORY.md` (not `MEMORY.md`) specifically to avoid collision with Claude's native memory system.
+
+Format: `[LEARN:category] Incorrect assumption → correct fact`
+
+Common categories: `notation`, `citation`, `r-code`, `workflow`, `latex`. Add a tag whenever the user corrects a factual claim, a compilation error reveals a wrong assumption, or a review agent catches a systematic error. These persist across sessions and prevent repeating the same mistake.
+
+**At session start, always read `./PROJECT_MEMORY.md`** to load past corrections before beginning work.
+
+---
+
+## Rule 5: Session Logging
+
+**Session logs live at `quality_reports/session_logs/YYYY-MM-DD_description.md`.** They are a running record of *why* things happened — not what changed (git handles that).
+
+There are **three distinct logging behaviors:**
+
+### 5a. Post-Plan Log (special trigger)
+
+**Immediately after a plan is approved**, create the session log file with:
+- The goal and plan summary
+- Key context and constraints discussed during planning
+- Rationale for the chosen approach, including rejected alternatives
+
+This is a specific, predictable trigger: plan approved → save log. It captures decisions while context is richest, before implementation eats up the context window.
+
+### 5b. Incremental Logging (during implementation)
+
+**As you work, append to the session log whenever something worth remembering happens:**
+- A design decision is made or changed mid-implementation
+- An unexpected problem is discovered and solved
+- The user expresses a preference or corrects an assumption
+- A review agent catches something significant
+- The approach deviates from the original plan
+
+This is the most important behavior. Context gets compressed as the session progresses. If a key decision lives only in the conversation, it will be lost. Writing it to the log file immediately makes it permanent.
+
+**Do not batch these updates.** Append a 1-3 line entry as soon as the event happens.
+
+### 5c. End-of-Session Log (closing trigger)
+
+**When the session is ending**, add a final section to the log with:
+- Summary of what was accomplished
+- Open questions for next session
+- Any unresolved issues
+
+Trigger: end-of-session signals ("let's wrap up", "commit this", "we're done").
+
+**Do not wait to be asked for any of these.** All three behaviors are proactive.

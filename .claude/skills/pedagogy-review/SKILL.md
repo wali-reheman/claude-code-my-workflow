@@ -14,7 +14,7 @@ Perform a comprehensive pedagogical review.
    - If no argument, ask user which lecture to review
    - If just a name, look in `Quarto/` or `Slides/`
 
-2. **Launch the pedagogy-reviewer agent** with the full file path
+2. **Launch the `pedagogy-reviewer` agent** with the full file path
    - The agent checks 13 pedagogical patterns
    - Performs deck-level analysis (narrative arc, pacing, visual rhythm, notation)
    - Considers student perspective (prerequisites, objections)

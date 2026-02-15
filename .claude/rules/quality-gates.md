@@ -137,6 +137,51 @@ paths:
 
 ---
 
+## Replication Packages (Replication/ directory)
+
+### Critical (Must Pass for Commit)
+| Issue | Deduction |
+|-------|-----------|
+| `00_master.R` or run order missing | -20 |
+| Script fails to run in numbered order | -100 (auto-fail) |
+| Raw data modified in place (no raw/processed separation) | -20 |
+| No README documenting software versions and run order | -15 |
+
+### Major (Should Pass for PR)
+| Issue | Deduction |
+|-------|-----------|
+| Missing codebook or data documentation | -10 |
+| Numbered script gap (e.g., 01, 03 — missing 02) | -5 |
+| No `sessionInfo()` or `renv.lock` for reproducibility | -5 |
+| Output directory empty after running scripts | -5 |
+| Download script lacks date stamp or version info | -3 |
+
+### Minor (Nice-to-Have)
+| Issue | Deduction |
+|-------|-----------|
+| README missing estimated runtime | -1 |
+| No disk space or memory requirements noted | -1 |
+| Output files not clearly named to match tables/figures in paper | -1 per file |
+
+---
+
+## Accessibility (applies to Quarto and Beamer slides)
+
+### Major
+| Issue | Deduction |
+|-------|-----------|
+| Figure without alt text (Quarto) or caption (Beamer) | -3 per figure |
+| Color-only encoding (meaning conveyed solely by color with no shape/label backup) | -5 per instance |
+| Insufficient contrast (light text on light background or vice versa) | -3 per slide |
+
+### Minor
+| Issue | Deduction |
+|-------|-----------|
+| Missing slide title (untitled slide in Quarto) | -1 per slide |
+| Complex table without summary text | -1 per table |
+
+---
+
 ## Quality Gate Enforcement
 
 ### Commit Gate (score < 80)

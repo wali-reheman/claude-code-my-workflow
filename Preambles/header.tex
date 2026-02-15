@@ -1,0 +1,67 @@
+% ==============================================================================
+% Beamer Preamble — [YOUR PROJECT NAME]
+% ==============================================================================
+%
+% This is the shared preamble for all Beamer slides in this project.
+% Customize the colors, fonts, and environments below for your institution.
+%
+% Usage: \input{header} (or via TEXINPUTS path from Slides/ directory)
+% ==============================================================================
+
+% --- Packages ---
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{natbib}
+
+% --- TikZ Libraries ---
+\usetikzlibrary{arrows.meta, positioning, calc, decorations.pathreplacing}
+
+% --- Institutional Colors (customize for your institution) ---
+\definecolor{primary_blue}{HTML}{012169}
+\definecolor{primary_gold}{HTML}{F2A900}
+\definecolor{accent_gray}{HTML}{525252}
+\definecolor{positive_green}{HTML}{15803D}
+\definecolor{negative_red}{HTML}{B91C1C}
+
+% --- Beamer Theme ---
+\usetheme{default}
+\usecolortheme{default}
+\setbeamercolor{structure}{fg=primary_blue}
+\setbeamercolor{title}{fg=primary_blue}
+\setbeamercolor{frametitle}{fg=primary_blue}
+
+% --- Custom Environments (customize as needed) ---
+
+% Key point box — gold background
+\newenvironment{keybox}{%
+  \begin{beamercolorbox}[rounded=true,shadow=true,wd=\textwidth]{palette primary}%
+    \color{black}%
+}{%
+  \end{beamercolorbox}%
+}
+
+% Highlight box — gold left accent
+\newenvironment{highlightbox}{%
+  \begin{beamercolorbox}[leftskip=0.5em,wd=\textwidth]{block body}%
+    \rule[-0.2em]{3pt}{1.2em}\hspace{0.5em}\color{primary_gold}%
+}{%
+  \end{beamercolorbox}%
+}
+
+% Method box — blue left accent
+\newenvironment{methodbox}{%
+  \begin{beamercolorbox}[leftskip=0.5em,wd=\textwidth]{block body}%
+    \rule[-0.2em]{3pt}{1.2em}\hspace{0.5em}\color{primary_blue}%
+}{%
+  \end{beamercolorbox}%
+}
+
+% --- Navigation and Footer ---
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+% --- Bibliography Style ---
+\bibliographystyle{apalike}

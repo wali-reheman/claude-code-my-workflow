@@ -1,0 +1,66 @@
+---
+title: "Lecture 1: [Your Topic]"
+subtitle: "[Your Course Name]"
+author: "[Your Name]"
+date: today
+format:
+  revealjs:
+    theme: [default, emory-clean.scss]
+    slide-number: true
+    chalkboard: false
+    preview-links: auto
+    transition: fade
+    width: 1920
+    height: 1080
+    fig-align: center
+bibliography: ../Bibliography_base.bib
+csl: https://raw.githubusercontent.com/citation-style-language/styles/master/american-political-science-review.csl
+---
+
+# Motivation {.section-slide}
+
+## Why This Matters
+
+- First key motivation point
+- Second key motivation point
+- Research question: **[Your question here]**
+
+::: {.notes}
+Speaker notes go here — visible in presenter mode only.
+:::
+
+## Key Concepts
+
+::: {.callout-note}
+## Key Term
+A formal definition goes here. Use consistent notation throughout.
+:::
+
+Mathematical notation example:
+
+$$Y_{it} = \alpha_i + \beta \cdot D_{it} + \varepsilon_{it}$$
+
+## Example Figure
+
+```{r}
+#| echo: false
+#| fig-width: 12
+#| fig-height: 5
+# Load pre-computed data if available
+# result <- readRDS("../Figures/Lecture1/example.rds")
+# Or generate inline:
+plot(1:10, main = "Replace with your figure")
+```
+
+## TikZ Diagram
+
+![Causal Diagram](../Figures/Lecture1/tikz_exact_00.svg){fig-align="center" width="60%"}
+
+::: {.aside}
+Source: Adapted from [Citation]
+:::
+
+## References
+
+::: {#refs}
+:::

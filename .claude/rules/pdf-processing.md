@@ -1,6 +1,7 @@
 ---
 paths:
   - "master_supporting_docs/**"
+  - "Replication/data/raw/**"
 ---
 
 # Robust PDF Processing Best Practices
@@ -13,10 +14,20 @@ Large PDFs (>50 pages or >20MB) can cause:
 - Incomplete or corrupted text extraction
 - Session crashes requiring restart
 
+## Where PDFs Live
+
+| Location | Typical Content | Who Puts Them There |
+|----------|----------------|-------------------|
+| `master_supporting_docs/supporting_papers/` | Academic papers for lecture/slide development | User uploads |
+| `master_supporting_docs/supporting_slides/` | Existing slide decks to upgrade | User uploads |
+| `Replication/data/raw/` | Dataset codebooks, data dictionaries, survey instruments | User downloads from data providers |
+
+**All locations follow the same safe processing protocol below.**
+
 ## The Safe Processing Workflow
 
-**Step 1: Receive PDF Upload**
-- User uploads PDF to `master_supporting_docs/supporting_papers/` or `supporting_slides/`
+**Step 1: Receive PDF**
+- User places PDF in one of the locations above
 - Claude DOES NOT attempt to read it directly
 
 **Step 2: Check PDF Properties**
@@ -67,6 +78,32 @@ done
 1. Process only 2-3 chunks per session
 2. Use Task tool with Explore agent for large-scale scanning
 3. Focus on specific sections user identifies as most important
+
+## Codebook and Data Dictionary PDFs
+
+Dataset codebooks (V-Dem, Polity, Afrobarometer, etc.) are often 100-500+ pages. They require special handling:
+
+**Priority sections to extract:**
+1. **Variable definitions** — names, descriptions, coding schemes, value labels
+2. **Country/unit coverage** — which countries/years are included
+3. **Missing data codes** — what values represent missing, refused, don't know
+4. **Sampling methodology** — for survey data (weights, stratification)
+5. **Version/changelog** — what changed between data releases
+
+**Strategy:** Don't read the entire codebook. After splitting:
+1. Scan the table of contents chunk (usually pages 1-5)
+2. Jump directly to the variable definitions section
+3. Read only the variables the user needs for their analysis
+4. Save extracted variable definitions to `data/codebook.md` as you go
+
+**Common codebook locations to document in `data/codebook.md`:**
+```
+V-Dem Codebook: Replication/data/raw/vdem_codebook_v14.pdf (pp. 30-180 for variable defs)
+Polity5 Manual: Replication/data/raw/polity5_manual.pdf (pp. 14-18 for component vars)
+WDI Metadata: accessed via WDI() R package — no PDF needed
+```
+
+---
 
 ## Performance Optimization
 

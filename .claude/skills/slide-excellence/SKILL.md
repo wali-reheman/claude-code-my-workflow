@@ -6,7 +6,7 @@ argument-hint: "[QMD or TEX filename]"
 
 # Slide Excellence Review
 
-Run a comprehensive multi-dimensional review of lecture slides. Multiple agents analyze the file independently, then results are synthesized.
+Run a comprehensive multi-dimensional review of lecture slides. Launch multiple agents to analyze the file independently, then synthesize results.
 
 ## Steps
 
@@ -14,7 +14,7 @@ Run a comprehensive multi-dimensional review of lecture slides. Multiple agents 
 
 Parse `$ARGUMENTS` for the filename. Resolve path in `Quarto/` or `Slides/`.
 
-### 2. Run Review Agents in Parallel
+### 2. Launch Review Agents in Parallel
 
 **Agent 1: Visual Audit** (slide-auditor)
 - Overflow, font consistency, box fatigue, spacing, images

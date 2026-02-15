@@ -1,0 +1,46 @@
+% ==============================================================================
+% Manuscript Preamble — Shared header for all papers in this project
+% ==============================================================================
+%
+% Usage: \input{../../Preambles/header.tex} from Manuscripts/paper_name/main.tex
+%
+% Customize packages and settings below for your project.
+% ==============================================================================
+
+% --- Core packages ---
+\usepackage{amsmath,amssymb,amsthm}   % Math environments
+\usepackage{booktabs}                  % Professional tables
+\usepackage{graphicx}                  % Figures
+\usepackage{hyperref}                  % Hyperlinks
+\usepackage{natbib}                    % Citations (author-year)
+\usepackage{setspace}                  % Line spacing
+\usepackage{geometry}                  % Page margins
+
+% --- Optional packages (uncomment as needed) ---
+% \usepackage{dcolumn}                 % Decimal-aligned columns in tables
+% \usepackage{longtable}               % Multi-page tables
+% \usepackage{appendix}                % Appendix formatting
+% \usepackage{subcaption}              % Sub-figures
+% \usepackage{tikz}                    % Diagrams
+% \usepackage{algorithm2e}             % Pseudocode
+
+% --- Page geometry ---
+\geometry{margin=1in}
+
+% --- Hyperlink formatting ---
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue,
+  pdfauthor={},       % Leave empty for anonymous submissions
+  pdfcreator={},
+}
+
+% --- Spacing ---
+\doublespacing  % Most journals require double spacing
+
+% --- Custom commands (add your own) ---
+% \newcommand{\E}{\mathbb{E}}
+% \newcommand{\V}{\mathbb{V}}
+% \newcommand{\Pr}{\mathbb{P}}

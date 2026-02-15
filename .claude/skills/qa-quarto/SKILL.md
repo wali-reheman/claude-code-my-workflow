@@ -41,11 +41,11 @@ Launch the `quarto-critic` agent to compare Beamer vs Quarto comprehensively. Re
 
 ## Phase 2: Fix Cycle
 
-If not APPROVED, launch `quarto-fixer` agent to apply fixes (Critical → Major → Minor), re-render, and verify.
+If not APPROVED, launch the `quarto-fixer` agent to apply fixes (Critical → Major → Minor), re-render, and verify.
 
 ## Phase 3: Re-Audit
 
-Re-launch critic to verify fixes. Loop back to Phase 2 if needed.
+Re-launch the `quarto-critic` agent to verify fixes. Loop back to Phase 2 if needed.
 
 ## Iteration Limits
 

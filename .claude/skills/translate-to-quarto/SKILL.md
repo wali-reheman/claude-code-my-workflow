@@ -35,7 +35,7 @@ Extract all citations from Beamer, map to bibliography keys.
 - Setup chunk for R data loading if needed
 
 ## Phase 3: Slide-by-Slide Translation
-- Delegate to `beamer-translator` agent
+- Launch the `beamer-translator` agent for slide-by-slide translation
 - 1:1 frame-to-slide mapping
 - Verbatim math, environment parity, no font reduction
 
@@ -49,7 +49,7 @@ Interactive plotly from RDS data, static SVG for TikZ/complex figures.
 Render, count slides, go through EVERY slide checking for issues.
 
 ## Phase 6.5: Pedagogical Review
-Run pedagogy-reviewer before visual polish.
+Launch the `pedagogy-reviewer` agent before visual polish.
 
 ## Phase 7: Visual Polish
 Semantic colors, transition slides, framing sentences.
