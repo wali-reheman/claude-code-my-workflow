@@ -17,6 +17,7 @@ import sys
 import hashlib
 from pathlib import Path
 from datetime import datetime
+from typing import Optional, Tuple
 
 THRESHOLD = 15
 STATE_DIR = Path("/tmp/claude-log-reminder")
@@ -57,7 +58,7 @@ def save_state(state_path: Path, state: dict):
     state_path.write_text(json.dumps(state))
 
 
-def find_latest_log(project_dir: str) -> tuple[Path | None, float]:
+def find_latest_log(project_dir: str) -> Tuple[Optional[Path], float]:
     """Find the most recently modified .md file in session_logs/."""
     log_dir = Path(project_dir) / "quality_reports" / "session_logs"
     if not log_dir.is_dir():
