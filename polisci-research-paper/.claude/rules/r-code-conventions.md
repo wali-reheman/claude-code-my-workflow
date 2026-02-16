@@ -12,6 +12,47 @@ These standards apply to all R scripts in this repository.
 
 ---
 
+## 0. NO MASS-PRODUCTION OF R SCRIPTS (MANDATORY)
+
+**Claude MUST give each R script individual, focused attention. Templated mass-production of R scripts is FORBIDDEN.**
+
+The problem: When asked to create multiple R scripts (e.g., a numbered pipeline `01_`–`04_`, or several figure scripts), Claude's natural instinct is to write one script carefully, then copy-paste its structure across the rest with superficial modifications. This produces scripts that *look* complete but contain shallow analytical decisions — wrong variable selections, naive merge keys, misapplied transformations, untested assumptions — because Claude was pattern-matching instead of thinking.
+
+### The Rule
+
+**Write each R script as if it were the only one.** Before writing any `.R` file, stop and think about what *this specific script* needs to do:
+
+- What data does *this* script actually receive as input? (Not what the plan says — what does the previous step *actually* produce?)
+- What are the analytical decisions specific to *this* step? (Variable selection, merge keys, filtering criteria, transformations)
+- What can go wrong *here*? (Missing values, unexpected duplicates, type mismatches, encoding issues)
+- What diagnostics should *this* script report? (Not generic diagnostics copy-pasted from the last script)
+
+### What This Forbids
+
+| Forbidden Pattern | Why It's Bad |
+|-------------------|-------------|
+| Writing a "template" script then adapting it 4 times | Each script has different analytical logic — templates obscure this |
+| Copy-pasting diagnostic blocks across scripts | Diagnostics should target each script's specific failure modes |
+| Generating all numbered scripts (`01_`–`04_`) in one pass | Later scripts depend on earlier scripts' actual output, not assumed output |
+| Using identical error-handling across scripts | Each script has different edge cases |
+| Reusing variable selection logic without re-examining the source data | Different datasets have different structures, coding schemes, and quirks |
+
+### What This Allows
+
+- Writing multiple scripts in one session is fine — as long as each gets genuine thought
+- Running and testing can happen after all scripts are written if the user prefers
+- Using consistent *style* (headers, section numbering, naming conventions) across scripts is good — that's convention, not mass-production
+- Referencing a previous script's approach while writing a new one is fine — as long as you adapt rather than copy
+
+### How Claude Should Work
+
+1. **Read the input data** (or the previous script's output specification) before writing
+2. **Think through the specific logic** this script needs — don't assume it mirrors another script
+3. **Write the script** with decisions tailored to its specific task
+4. **Move to the next script** — and repeat the thinking step fresh, not just the writing step
+
+---
+
 ## 1. Script Structure
 
 Every script MUST follow this section layout:

@@ -91,6 +91,8 @@ Build clean, merge-verified, documented analysis datasets from public political 
 
 **GATE: Wait for user approval before writing scripts.**
 
+> **NO MASS-PRODUCTION:** Give each script individual analytical attention. Don't template `01_download.R` and copy-paste the pattern across `02_clean.R`, `03_merge.R`, etc. Each script has different data, different logic, and different failure modes. See `r-code-conventions.md` Section 0.
+
 ### Step 1: Download / Load Scripts
 
 For each dataset, generate the appropriate download script:

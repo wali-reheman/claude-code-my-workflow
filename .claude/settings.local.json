@@ -59,7 +59,14 @@
       "WebFetch(domain:blog.jetbrains.com)",
       "WebFetch(domain:gist.github.com)",
       "WebFetch(domain:substratia.io)",
-      "WebFetch(domain:www.medrxiv.org)"
+      "WebFetch(domain:www.medrxiv.org)",
+      "Bash(do echo \"=== $f ===\")",
+      "Bash(/opt/homebrew/bin/python3:*)",
+      "Bash(md5:*)",
+      "Bash(/usr/bin/env python3:*)",
+      "Bash(/usr/bin/python3:*)",
+      "Bash(do /usr/bin/python3 -c \"import json; d=json.load\\(open\\(''$f''\\)\\); assert ''/opt/homebrew'' not in json.dumps\\(d\\), ''STILL HAS HOMEBREW''; print\\(''OK: '' + ''$f''.split\\(''/''\\)[-3]\\)\")",
+      "Bash(claude --version:*)"
     ]
   }
 }

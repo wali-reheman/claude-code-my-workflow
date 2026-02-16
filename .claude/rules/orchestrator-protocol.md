@@ -79,6 +79,8 @@ Parallelism is not limited to review. During **Step 1 (IMPLEMENT)**, if the plan
 
 **Limits:** Max 3 parallel agents. Only for tasks with no dependencies between them. If task B needs task A's output, they must run sequentially. Each agent consumes its own context window, so prefer parallelism for bounded, focused subtasks.
 
+**R SCRIPT EXCLUSION:** R scripts (`.R` files) are **excluded** from parallel agent spawning. Each R script requires individual analytical thinking — never template one script and mass-produce the rest. When the plan includes multiple R scripts, give each one focused, independent attention. See `r-code-conventions.md` Section 0.
+
 ---
 
 ## Fix Priority and Loop Limits
